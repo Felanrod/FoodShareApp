@@ -2,7 +2,6 @@
 ## Project for COMP2083 - Web Project Studio
 
 ### Created by The Deciders
-# 
 
 ## About the App
 This application is for people who are in need of food to be able to find people and organizations who are providing food, using a map that shows the locations of food providers.
@@ -26,7 +25,7 @@ This application is for people who are in need of food to be able to find people
 Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
 ```
 5. Click `DEBUG` > `Start Without Debugging`
-#
+
 ### Who Are The Deciders?
 - Andrew Brough
 - Jayden Hluszko
