@@ -52,6 +52,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -176,13 +178,55 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DbFoodShare.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbFoodShare.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbFoodShare.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbFoodShare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbFoodShare.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbFoodShare.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Event.cs">
+      <DependentUpon>DbFoodShare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Food.cs">
+      <DependentUpon>DbFoodShare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FoodAmount.cs">
+      <DependentUpon>DbFoodShare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FoodHour.cs">
+      <DependentUpon>DbFoodShare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FoodProvider.cs">
+      <DependentUpon>DbFoodShare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FoodType.cs">
+      <DependentUpon>DbFoodShare.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Notification.cs">
+      <DependentUpon>DbFoodShare.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationType.cs">
+      <DependentUpon>DbFoodShare.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requester.cs">
+      <DependentUpon>DbFoodShare.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,12 +234,29 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DbFoodShare.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbFoodShare.edmx</DependentUpon>
+      <LastGenOutput>DbFoodShare.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DbFoodShare.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbFoodShare.edmx</DependentUpon>
+      <LastGenOutput>DbFoodShare.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="DbFoodShare.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbFoodShare.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DbFoodShare.edmx.diagram">
+      <DependentUpon>DbFoodShare.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -259,6 +320,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
