@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FoodShareMapAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodProviderAdminId" Type="int" Nullable="false" />
+          <Property Name="EventName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="EventDate" Type="date" Nullable="false" />
+          <Property Name="EventTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FoodAmounts">
+          <Key>
+            <PropertyRef Name="FoodAmountId" />
+          </Key>
+          <Property Name="FoodAmountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodAmount" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodHours">
+          <Key>
+            <PropertyRef Name="FoodHourId" />
+          </Key>
+          <Property Name="FoodHourId" Type="int" Nullable="false" />
+          <Property Name="FoodProviderId" Type="int" Nullable="false" />
+          <Property Name="OpenHourMo" Type="int" />
+          <Property Name="CloseHourMo" Type="int" />
+          <Property Name="OpenHourTu" Type="int" />
+          <Property Name="CloseHourTu" Type="int" />
+          <Property Name="OpenHourWe" Type="int" />
+          <Property Name="CloseHourWe" Type="int" />
+          <Property Name="OpenHourTh" Type="int" />
+          <Property Name="CloseHourTh" Type="int" />
+          <Property Name="OpenHourFr" Type="int" />
+          <Property Name="CloseHourFr" Type="int" />
+          <Property Name="OpenHourSa" Type="int" />
+          <Property Name="CloseHourSa" Type="int" />
+          <Property Name="OpenHourSu" Type="int" />
+          <Property Name="CloseHourSu" Type="int" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FoodProviders">
+          <Key>
+            <PropertyRef Name="FoodProviderId" />
+          </Key>
+          <Property Name="FoodProviderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="LogoUrl" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Street" Type="nvarchar" MaxLength="500" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="160" Nullable="false" />
+          <Property Name="Services" Type="nvarchar(max)" />
+          <Property Name="Website" Type="nvarchar" MaxLength="500" />
+          <Property Name="Verified" Type="bit" Nullable="false" />
+          <Property Name="Admin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Foods">
+          <Key>
+            <PropertyRef Name="FoodId" />
+          </Key>
+          <Property Name="FoodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FoodProviderId" Type="int" Nullable="false" />
+          <Property Name="FoodTypeId" Type="int" Nullable="false" />
+          <Property Name="FoodAmountId" Type="int" Nullable="false" />
+          <Property Name="Urgent" Type="bit" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FoodShareMapApp.dbo.FoodTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FoodTypes">
+          <Key>
+            <PropertyRef Name="FoodTypeId" />
+            <PropertyRef Name="FoodType" />
+          </Key>
+          <Property Name="FoodTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="ToId" Type="int" Nullable="false" />
+          <Property Name="FromId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Viewed" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationTypes">
+          <Key>
+            <PropertyRef Name="NotificationTypeId" />
+          </Key>
+          <Property Name="NotificationTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Requesters">
+          <Key>
+            <PropertyRef Name="RequesterId" />
+          </Key>
+          <Property Name="RequesterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="500" />
+          <Property Name="PostalCode" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FoodShareMapAppModelStoreContainer">
+          <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodAmounts" EntityType="Self.FoodAmounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodHours" EntityType="Self.FoodHours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodProviders" EntityType="Self.FoodProviders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Foods" EntityType="Self.Foods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationTypes" EntityType="Self.NotificationTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requesters" EntityType="Self.Requesters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodTypes" EntityType="Self.FoodTypes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FoodTypes].[FoodTypeId] AS [FoodTypeId], 
+    [FoodTypes].[FoodType] AS [FoodType]
+    FROM [dbo].[FoodTypes] AS [FoodTypes]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FoodShareMapAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodProviderAdminId" Type="Int32" Nullable="false" />
+          <Property Name="EventName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EventDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EventTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FoodAmount">
+          <Key>
+            <PropertyRef Name="FoodAmountId" />
+          </Key>
+          <Property Name="FoodAmountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodAmount1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodHour">
+          <Key>
+            <PropertyRef Name="FoodHourId" />
+          </Key>
+          <Property Name="FoodHourId" Type="Int32" Nullable="false" />
+          <Property Name="FoodProviderId" Type="Int32" Nullable="false" />
+          <Property Name="OpenHourMo" Type="Int32" />
+          <Property Name="CloseHourMo" Type="Int32" />
+          <Property Name="OpenHourTu" Type="Int32" />
+          <Property Name="CloseHourTu" Type="Int32" />
+          <Property Name="OpenHourWe" Type="Int32" />
+          <Property Name="CloseHourWe" Type="Int32" />
+          <Property Name="OpenHourTh" Type="Int32" />
+          <Property Name="CloseHourTh" Type="Int32" />
+          <Property Name="OpenHourFr" Type="Int32" />
+          <Property Name="CloseHourFr" Type="Int32" />
+          <Property Name="OpenHourSa" Type="Int32" />
+          <Property Name="CloseHourSa" Type="Int32" />
+          <Property Name="OpenHourSu" Type="Int32" />
+          <Property Name="CloseHourSu" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FoodProvider">
+          <Key>
+            <PropertyRef Name="FoodProviderId" />
+          </Key>
+          <Property Name="FoodProviderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LogoUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="160" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Services" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Verified" Type="Boolean" Nullable="false" />
+          <Property Name="Admin" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Food">
+          <Key>
+            <PropertyRef Name="FoodId" />
+          </Key>
+          <Property Name="FoodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FoodProviderId" Type="Int32" Nullable="false" />
+          <Property Name="FoodTypeId" Type="Int32" Nullable="false" />
+          <Property Name="FoodAmountId" Type="Int32" Nullable="false" />
+          <Property Name="Urgent" Type="Boolean" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="ToId" Type="Int32" Nullable="false" />
+          <Property Name="FromId" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Viewed" Type="Boolean" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="NotificationType">
+          <Key>
+            <PropertyRef Name="NotificationTypeId" />
+          </Key>
+          <Property Name="NotificationTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Requester">
+          <Key>
+            <PropertyRef Name="RequesterId" />
+          </Key>
+          <Property Name="RequesterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodType">
+          <Key>
+            <PropertyRef Name="FoodTypeId" />
+            <PropertyRef Name="FoodType1" />
+          </Key>
+          <Property Name="FoodTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DefaultConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Events" EntityType="Self.Event" />
+          <EntitySet Name="FoodAmounts" EntityType="Self.FoodAmount" />
+          <EntitySet Name="FoodHours" EntityType="Self.FoodHour" />
+          <EntitySet Name="FoodProviders" EntityType="Self.FoodProvider" />
+          <EntitySet Name="Foods" EntityType="Self.Food" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="NotificationTypes" EntityType="Self.NotificationType" />
+          <EntitySet Name="Requesters" EntityType="Self.Requester" />
+          <EntitySet Name="FoodTypes" EntityType="Self.FoodType" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FoodShareMapAppModelStoreContainer" CdmEntityContainer="DefaultConnection">
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="FoodShareMapAppModel.Event">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="FoodProviderAdminId" ColumnName="FoodProviderAdminId" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodAmounts">
+            <EntityTypeMapping TypeName="FoodShareMapAppModel.FoodAmount">
+              <MappingFragment StoreEntitySet="FoodAmounts">
+                <ScalarProperty Name="FoodAmountId" ColumnName="FoodAmountId" />
+                <ScalarProperty Name="FoodAmount1" ColumnName="FoodAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodHours">
+            <EntityTypeMapping TypeName="FoodShareMapAppModel.FoodHour">
+              <MappingFragment StoreEntitySet="FoodHours">
+                <ScalarProperty Name="FoodHourId" ColumnName="FoodHourId" />
+                <ScalarProperty Name="FoodProviderId" ColumnName="FoodProviderId" />
+                <ScalarProperty Name="OpenHourMo" ColumnName="OpenHourMo" />
+                <ScalarProperty Name="CloseHourMo" ColumnName="CloseHourMo" />
+                <ScalarProperty Name="OpenHourTu" ColumnName="OpenHourTu" />
+                <ScalarProperty Name="CloseHourTu" ColumnName="CloseHourTu" />
+                <ScalarProperty Name="OpenHourWe" ColumnName="OpenHourWe" />
+                <ScalarProperty Name="CloseHourWe" ColumnName="CloseHourWe" />
+                <ScalarProperty Name="OpenHourTh" ColumnName="OpenHourTh" />
+                <ScalarProperty Name="CloseHourTh" ColumnName="CloseHourTh" />
+                <ScalarProperty Name="OpenHourFr" ColumnName="OpenHourFr" />
+                <ScalarProperty Name="CloseHourFr" ColumnName="CloseHourFr" />
+                <ScalarProperty Name="OpenHourSa" ColumnName="OpenHourSa" />
+                <ScalarProperty Name="CloseHourSa" ColumnName="CloseHourSa" />
+                <ScalarProperty Name="OpenHourSu" ColumnName="OpenHourSu" />
+                <ScalarProperty Name="CloseHourSu" ColumnName="CloseHourSu" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodProviders">
+            <EntityTypeMapping TypeName="FoodShareMapAppModel.FoodProvider">
+              <MappingFragment StoreEntitySet="FoodProviders">
+                <ScalarProperty Name="FoodProviderId" ColumnName="FoodProviderId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Services" ColumnName="Services" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Foods">
+            <EntityTypeMapping TypeName="FoodShareMapAppModel.Food">
+              <MappingFragment StoreEntitySet="Foods">
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+                <ScalarProperty Name="FoodProviderId" ColumnName="FoodProviderId" />
+                <ScalarProperty Name="FoodTypeId" ColumnName="FoodTypeId" />
+                <ScalarProperty Name="FoodAmountId" ColumnName="FoodAmountId" />
+                <ScalarProperty Name="Urgent" ColumnName="Urgent" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="FoodShareMapAppModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="ToId" ColumnName="ToId" />
+                <ScalarProperty Name="FromId" ColumnName="FromId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Viewed" ColumnName="Viewed" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationTypes">
+            <EntityTypeMapping TypeName="FoodShareMapAppModel.NotificationType">
+              <MappingFragment StoreEntitySet="NotificationTypes">
+                <ScalarProperty Name="NotificationTypeId" ColumnName="NotificationTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requesters">
+            <EntityTypeMapping TypeName="FoodShareMapAppModel.Requester">
+              <MappingFragment StoreEntitySet="Requesters">
+                <ScalarProperty Name="RequesterId" ColumnName="RequesterId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodTypes">
+            <EntityTypeMapping TypeName="FoodShareMapAppModel.FoodType">
+              <MappingFragment StoreEntitySet="FoodTypes">
+                <ScalarProperty Name="FoodTypeId" ColumnName="FoodTypeId" />
+                <ScalarProperty Name="FoodType1" ColumnName="FoodType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
