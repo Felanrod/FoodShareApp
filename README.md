@@ -1,5 +1,5 @@
 # Food Share Map App
-[Our Website](https://thefoodsharemap.azurewebsites.net/)
+[Our Website](https://thefoodsharemap.azurewebsites.net/){:target="_blank"}
 ## Project for COMP2083 - Web Project Studio
 
 ### Created by The Deciders
