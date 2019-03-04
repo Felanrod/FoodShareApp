@@ -1,5 +1,6 @@
 # Food Share Map App
 [Our Website](https://thefoodsharemap.azurewebsites.net/){:target="_blank"}
+ <a href="http://google.com/" target="_blank">Hello, world!</a>
 ## Project for COMP2083 - Web Project Studio
 
 ### Created by The Deciders
