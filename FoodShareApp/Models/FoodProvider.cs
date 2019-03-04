@@ -14,7 +14,7 @@ namespace FoodShareApp
             FoodHours = new HashSet<FoodHour>();
         }
 
-        public int FoodProviderId { get; set; }
+        public string FoodProviderId { get; set; }
 
         [Required]
         [StringLength(300)]
