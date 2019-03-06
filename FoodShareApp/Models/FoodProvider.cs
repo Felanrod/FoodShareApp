@@ -50,6 +50,9 @@ namespace FoodShareApp
         [StringLength(160)]
         public string Email { get; set; }
 
+        [Required]
+        public int FoodProviderTypeId { get; set; }
+
         public string Services { get; set; }
 
         [StringLength(500)]

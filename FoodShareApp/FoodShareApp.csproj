@@ -178,7 +178,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DbFoodShare.cs" />
+    <Compile Include="Models\DbFoodShare.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\FoodAmount.cs" />
