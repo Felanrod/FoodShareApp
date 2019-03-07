@@ -1,4 +1,4 @@
-namespace FoodShareApp
+﻿namespace FoodShareApp
 {
     using System;
     using System.Collections.Generic;
@@ -6,23 +6,23 @@ namespace FoodShareApp
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class FoodType
+    public partial class FoodProviderType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FoodType()
+        public FoodProviderType()
         {
-            Foods = new HashSet<Food>();
+            FoodProviders = new HashSet<FoodProvider>();
         }
 
         [Key]
-        public int FoodTypeId { get; set; }
+        public int ProviderTypeId { get; set; }
 
-        [Column("FoodType")]
+        [Column("ProviderType")]
         [Required]
         [StringLength(50)]
-        public string FoodType1 { get; set; }
+        public string ProviderType1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Food> Foods { get; set; }
+        public virtual ICollection<FoodProvider> FoodProviders { get; set; }
     }
 }

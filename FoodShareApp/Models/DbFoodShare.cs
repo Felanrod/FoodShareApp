@@ -16,6 +16,7 @@ namespace FoodShareApp
         public virtual DbSet<FoodAmount> FoodAmounts { get; set; }
         public virtual DbSet<FoodHour> FoodHours { get; set; }
         public virtual DbSet<FoodProvider> FoodProviders { get; set; }
+        public virtual DbSet<FoodProviderType> FoodProviderTypes { get; set; }
         public virtual DbSet<Food> Foods { get; set; }
         public virtual DbSet<FoodType> FoodTypes { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
@@ -39,6 +40,12 @@ namespace FoodShareApp
             modelBuilder.Entity<FoodProvider>()
                 .HasMany(e => e.FoodHours)
                 .WithRequired(e => e.FoodProvider)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<FoodProviderType>()
+                .HasMany(e => e.FoodProviders)
+                .WithRequired(e => e.FoodProviderType)
+                .HasForeignKey(e => e.FoodProviderTypeId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<FoodType>()

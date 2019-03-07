@@ -17,7 +17,8 @@ namespace FoodShareApp.Views
         // GET: FoodProviders
         public ActionResult Index()
         {
-            return View(db.FoodProviders.ToList());
+            var foodProviders = db.FoodProviders.Include(f => f.FoodProviderType);
+            return View(foodProviders.ToList());
         }
 
         // GET: FoodProviders/Details/5
@@ -38,6 +39,7 @@ namespace FoodShareApp.Views
         // GET: FoodProviders/Create
         public ActionResult Create()
         {
+            ViewBag.ProviderTypeId = new SelectList(db.FoodProviderTypes, "ProviderTypeId", "ProviderType1");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace FoodShareApp.Views
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FoodProviderId,Name,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,Services,Website,Verified,Admin")] FoodProvider foodProvider)
+        public ActionResult Create([Bind(Include = "FoodProviderId,Name,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,FoodProviderTypeId,Services,Website,Verified,Admin")] FoodProvider foodProvider)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace FoodShareApp.Views
                 return RedirectToAction("Index");
             }
 
+            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "ProviderTypeId", "FoodProviderType1", foodProvider.FoodProviderTypeId);
             return View(foodProvider);
         }
 
@@ -70,6 +73,7 @@ namespace FoodShareApp.Views
             {
                 return HttpNotFound();
             }
+            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "ProviderTypeId", "FoodProviderType1", foodProvider.FoodProviderTypeId);
             return View(foodProvider);
         }
 
@@ -86,6 +90,7 @@ namespace FoodShareApp.Views
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "ProviderTypeId", "FoodProviderType1", foodProvider.FoodProviderTypeId);
             return View(foodProvider);
         }
 

@@ -184,6 +184,7 @@
     <Compile Include="Models\FoodAmount.cs" />
     <Compile Include="Models\FoodHour.cs" />
     <Compile Include="Models\FoodProvider.cs" />
+    <Compile Include="Models\FoodProviderType.cs" />
     <Compile Include="Models\FoodType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,6 +198,7 @@
     <Compile Include="Models\Requester.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\FoodProvidersController.cs" />
+    <Compile Include="Controllers\FoodsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -262,6 +264,11 @@
     <Content Include="Views\FoodProviders\Details.cshtml" />
     <Content Include="Views\FoodProviders\Edit.cshtml" />
     <Content Include="Views\FoodProviders\Index.cshtml" />
+    <Content Include="Views\Foods\Create.cshtml" />
+    <Content Include="Views\Foods\Delete.cshtml" />
+    <Content Include="Views\Foods\Details.cshtml" />
+    <Content Include="Views\Foods\Edit.cshtml" />
+    <Content Include="Views\Foods\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,75 @@
+﻿@model FoodShareApp.Food
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Food</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodType.FoodType1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodType.FoodType1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodProviderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodProviderId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodAmountId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodAmountId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Urgent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Urgent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FoodId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

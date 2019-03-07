@@ -64,5 +64,7 @@ namespace FoodShareApp
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FoodHour> FoodHours { get; set; }
+
+        public virtual FoodProviderType FoodProviderType { get; set; }
     }
 }
