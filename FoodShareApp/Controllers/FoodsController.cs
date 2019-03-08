@@ -18,8 +18,9 @@ namespace FoodShareApp.Views
         // GET: Foods
         public ActionResult Index()
         {
-            System.Diagnostics.Debug.WriteLine("This is the console!");
-            var foods = db.Foods.Include(f => f.FoodType);
+            var userId = User.Identity.GetUserId();
+            var foods = db.Foods.Include(f => f.FoodType).Where(f => f.FoodProviderId == userId);
+            //foods = foods.Where(f => f.FoodProviderId.Equals(User.Identity.GetUserId()));
             return View(foods.ToList());
         }
 
@@ -41,8 +42,9 @@ namespace FoodShareApp.Views
         // GET: Foods/Create
         public ActionResult Create()
         {
+            var userId = User.Identity.GetUserId();
             ViewBag.RightNow = DateTime.Now;
-            ViewBag.FoodProviderId = User.Identity.GetUserId();
+            ViewBag.FoodProviderId = userId;
             ViewBag.FoodTypeId = new SelectList(db.FoodTypes, "FoodTypeId", "FoodType1");
             return View();
         }
@@ -54,16 +56,17 @@ namespace FoodShareApp.Views
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "FoodId,FoodName,FoodTypeId,FoodAmountId,Urgent,Notes")] Food food)
         {
+            var userId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
-                food.FoodProviderId = User.Identity.GetUserId();
+                food.FoodProviderId = userId;
                 food.DateCreated = DateTime.Now;
                 db.Foods.Add(food);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FoodProviderId = User.Identity.GetUserId();
+            ViewBag.FoodProviderId = userId;
             ViewBag.FoodTypeId = new SelectList(db.FoodTypes, "FoodTypeId", "FoodType1", food.FoodTypeId);
             return View(food);
         }
