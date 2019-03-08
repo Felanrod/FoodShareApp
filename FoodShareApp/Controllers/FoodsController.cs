@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FoodShareApp;
+using Microsoft.AspNet.Identity;
 
 namespace FoodShareApp.Views
 {
@@ -17,6 +18,7 @@ namespace FoodShareApp.Views
         // GET: Foods
         public ActionResult Index()
         {
+            System.Diagnostics.Debug.WriteLine("This is the console!");
             var foods = db.Foods.Include(f => f.FoodType);
             return View(foods.ToList());
         }
@@ -39,6 +41,8 @@ namespace FoodShareApp.Views
         // GET: Foods/Create
         public ActionResult Create()
         {
+            ViewBag.RightNow = DateTime.Now;
+            ViewBag.FoodProviderId = User.Identity.GetUserId();
             ViewBag.FoodTypeId = new SelectList(db.FoodTypes, "FoodTypeId", "FoodType1");
             return View();
         }
@@ -48,15 +52,18 @@ namespace FoodShareApp.Views
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FoodId,FoodName,FoodProviderId,FoodTypeId,FoodAmountId,Urgent,Notes,DateCreated")] Food food)
+        public ActionResult Create([Bind(Include = "FoodId,FoodName,FoodTypeId,FoodAmountId,Urgent,Notes")] Food food)
         {
             if (ModelState.IsValid)
             {
+                food.FoodProviderId = User.Identity.GetUserId();
+                food.DateCreated = DateTime.Now;
                 db.Foods.Add(food);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.FoodProviderId = User.Identity.GetUserId();
             ViewBag.FoodTypeId = new SelectList(db.FoodTypes, "FoodTypeId", "FoodType1", food.FoodTypeId);
             return View(food);
         }
