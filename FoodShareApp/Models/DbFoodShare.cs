@@ -44,7 +44,7 @@ namespace FoodShareApp
 
             modelBuilder.Entity<FoodProviderType>()
                 .HasMany(e => e.FoodProviders)
-                .WithRequired(e => e.FoodProviderType)
+                .WithRequired(e => e.ProviderType)
                 .HasForeignKey(e => e.FoodProviderTypeId)
                 .WillCascadeOnDelete(false);
 

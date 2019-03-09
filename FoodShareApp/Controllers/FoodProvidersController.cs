@@ -18,7 +18,7 @@ namespace FoodShareApp.Views
         // GET: FoodProviders
         public ActionResult Index()
         {
-            var foodProviders = db.FoodProviders.Include(f => f.FoodProviderType);
+            var foodProviders = db.FoodProviders.Include(f => f.ProviderType);
             return View(foodProviders.ToList());
         }
 
@@ -40,7 +40,7 @@ namespace FoodShareApp.Views
         // GET: FoodProviders/Create
         public ActionResult Create()
         {
-            ViewBag.ProviderTypeId = new SelectList(db.FoodProviderTypes, "ProviderTypeId", "ProviderType1");
+            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "FoodProviderTypeId", "ProviderType1");
             return View();
         }
 
@@ -60,7 +60,7 @@ namespace FoodShareApp.Views
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "ProviderTypeId", "FoodProviderType1", foodProvider.FoodProviderTypeId);
+            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "FoodProviderTypeId", "ProviderType1", foodProvider.FoodProviderTypeId);
             return View(foodProvider);
         }
 
@@ -76,7 +76,7 @@ namespace FoodShareApp.Views
             {
                 return HttpNotFound();
             }
-            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "ProviderTypeId", "FoodProviderType1", foodProvider.FoodProviderTypeId);
+            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "FoodProviderTypeId", "ProviderType1", foodProvider.FoodProviderTypeId);
             return View(foodProvider);
         }
 
@@ -93,7 +93,7 @@ namespace FoodShareApp.Views
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "ProviderTypeId", "FoodProviderType1", foodProvider.FoodProviderTypeId);
+            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "FoodProviderTypeId", "ProviderType1", foodProvider.FoodProviderTypeId);
             return View(foodProvider);
         }
 

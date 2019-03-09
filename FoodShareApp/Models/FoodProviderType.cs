@@ -15,7 +15,7 @@
         }
 
         [Key]
-        public int ProviderTypeId { get; set; }
+        public int FoodProviderTypeId { get; set; }
 
         [Column("ProviderType")]
         [Required]
