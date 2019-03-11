@@ -3,136 +3,43 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title - The Food Share Map</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="~/Content/styles.css">
-    <title>@ViewBag.Title - The Food Share Map</title>
 
 </head>
 <body>
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("The Food Share Map", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Food Sharers", "Index", "FoodProviders")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("The Food Share Map", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-        </div>*@
-    <header class="mdc-top-app-bar mdc-elevation--z4">
-        <nav class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <a class="mdc-top-app-bar__title" href="/">
-                    <img id="logo" src="~/Content/Images/logo-alt-colour-2.png" alt="The Food Share Map Logo" />
-                </a>
-            </section>
-            <ul class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <li>
-                    <a class="mdc-button mdc-tab" href="/" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">About Us</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="mdc-button mdc-tab" href="foodSources" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Food Sources</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="mdc-button mdc-tab" href="shareFood" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Share Food</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
-                </li>
-                <li class="divide">|</li>
-                <li>
-                    <a class="mdc-button mdc-tab" href="logIn" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Log In</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Food Sharers", "Index", "FoodProviders")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - The Food Share Map created by The Deciders</p>
+        </footer>
     </div>
-    <footer class="mdc-top-app-bar mdc-elevation--z4">
-        <div class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <p class="copyright">&copy; Center for Changemaking and Social Innovation</p>
-            </section>
-            <ul class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <li>
-                    <a class="mdc-button mdc-tab" href="about" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Legal</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="mdc-button mdc-tab" href="portfolio" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Terms of Use</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="mdc-button mdc-tab" href="contact" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Contact</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </footer>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <script src="~/Scripts/script.js"></script>
 </body>
 </html>

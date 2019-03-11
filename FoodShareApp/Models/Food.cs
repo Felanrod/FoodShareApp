@@ -14,7 +14,7 @@ namespace FoodShareApp
         [StringLength(100)]
         public string FoodName { get; set; }
 
-        public int FoodProviderId { get; set; }
+        public string FoodProviderId { get; set; }
 
         public int FoodTypeId { get; set; }
 

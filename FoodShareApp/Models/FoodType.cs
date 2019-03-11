@@ -14,6 +14,7 @@ namespace FoodShareApp
             Foods = new HashSet<Food>();
         }
 
+        [Key]
         public int FoodTypeId { get; set; }
 
         [Column("FoodType")]
