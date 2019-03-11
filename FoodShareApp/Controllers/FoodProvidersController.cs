@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FoodShareApp;
-using Microsoft.AspNet.Identity;
 
 namespace FoodShareApp.Views
 {
@@ -18,8 +17,7 @@ namespace FoodShareApp.Views
         // GET: FoodProviders
         public ActionResult Index()
         {
-            var foodProviders = db.FoodProviders.Include(f => f.ProviderType);
-            return View(foodProviders.ToList());
+            return View(db.FoodProviders.ToList());
         }
 
         // GET: FoodProviders/Details/5
@@ -40,7 +38,6 @@ namespace FoodShareApp.Views
         // GET: FoodProviders/Create
         public ActionResult Create()
         {
-            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "FoodProviderTypeId", "ProviderType1");
             return View();
         }
 
@@ -49,18 +46,15 @@ namespace FoodShareApp.Views
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,FoodProviderTypeId,Services,Website,Verified,Admin")] FoodProvider foodProvider)
+        public ActionResult Create([Bind(Include = "FoodProviderId,Name,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,Services,Website,Verified,Admin")] FoodProvider foodProvider)
         {
-            var userId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
-                foodProvider.FoodProviderId = userId;
                 db.FoodProviders.Add(foodProvider);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "FoodProviderTypeId", "ProviderType1", foodProvider.FoodProviderTypeId);
             return View(foodProvider);
         }
 
@@ -76,7 +70,6 @@ namespace FoodShareApp.Views
             {
                 return HttpNotFound();
             }
-            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "FoodProviderTypeId", "ProviderType1", foodProvider.FoodProviderTypeId);
             return View(foodProvider);
         }
 
@@ -85,7 +78,7 @@ namespace FoodShareApp.Views
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Name,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,Services,Website,Verified,Admin")] FoodProvider foodProvider)
+        public ActionResult Edit([Bind(Include = "FoodProviderId,Name,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,Services,Website,Verified,Admin")] FoodProvider foodProvider)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +86,6 @@ namespace FoodShareApp.Views
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "FoodProviderTypeId", "ProviderType1", foodProvider.FoodProviderTypeId);
             return View(foodProvider);
         }
 
