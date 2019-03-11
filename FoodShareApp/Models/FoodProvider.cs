@@ -50,9 +50,6 @@ namespace FoodShareApp
         [StringLength(160)]
         public string Email { get; set; }
 
-        [Required]
-        public int FoodProviderTypeId { get; set; }
-
         public string Services { get; set; }
 
         [StringLength(500)]
@@ -64,7 +61,5 @@ namespace FoodShareApp
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FoodHour> FoodHours { get; set; }
-
-        public virtual FoodProviderType ProviderType { get; set; }
     }
 }
