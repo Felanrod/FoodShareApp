@@ -38,6 +38,7 @@ namespace FoodShareApp.Views
         }
 
         // GET: FoodProviders/Create
+        [Authorize(Roles = "Provider")]
         public ActionResult Create()
         {
             ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "FoodProviderTypeId", "ProviderType1");
@@ -49,6 +50,7 @@ namespace FoodShareApp.Views
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Provider")]
         public ActionResult Create([Bind(Include = "Name,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,FoodProviderTypeId,Services,Website,Verified,Admin")] FoodProvider foodProvider)
         {
             var userId = User.Identity.GetUserId();
@@ -131,5 +133,32 @@ namespace FoodShareApp.Views
             }
             base.Dispose(disposing);
         }
+
+        // GET: FoodProviders/Register
+        //[Authorize(Roles = "Provider")]
+        //public ActionResult Register()
+        //{
+        //    return View();
+        //}
+
+        //// POST: FoodProvider/Register
+        //[Authorize(Roles = "Provider")]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Register(FormCollection values)
+        //{
+        //    var provider = new FoodProvider();
+        //    TryUpdateModel(provider);
+
+        //    string id = User.Identity.GetUserId();
+        //    provider.FoodProviderId = id;
+
+        //    db.FoodProviders.Add(provider);
+        //    db.SaveChanges();
+
+        //    return RedirectToAction("Index", "FoodProviders");
+        //}
+
+
     }
 }
