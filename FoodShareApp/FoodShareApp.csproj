@@ -178,6 +178,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RequestersController.cs" />
     <Compile Include="Models\DbFoodShare.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Food.cs" />
@@ -206,8 +207,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\ashoka-Canada.jpg" />
-    <Content Include="Content\normalize.css" />
-    <Content Include="Content\Styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -225,7 +224,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\Script.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -272,6 +270,11 @@
     <Content Include="Views\Foods\Details.cshtml" />
     <Content Include="Views\Foods\Edit.cshtml" />
     <Content Include="Views\Foods\Index.cshtml" />
+    <Content Include="Views\Requesters\Create.cshtml" />
+    <Content Include="Views\Requesters\Delete.cshtml" />
+    <Content Include="Views\Requesters\Details.cshtml" />
+    <Content Include="Views\Requesters\Edit.cshtml" />
+    <Content Include="Views\Requesters\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
