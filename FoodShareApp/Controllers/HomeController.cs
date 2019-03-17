@@ -8,9 +8,12 @@ namespace FoodShareApp.Controllers
 {
     public class HomeController : Controller
     {
+        private DbFoodShare db = new DbFoodShare();
+
         public ActionResult Index()
         {
-            return View();
+            var foodProviders = db.FoodProviders.OrderBy(f => Guid.NewGuid()).Take(3);
+            return View(foodProviders);
         }
 
         public ActionResult About()

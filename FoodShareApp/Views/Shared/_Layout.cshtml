@@ -21,9 +21,9 @@
             </section>
             <ul class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
                 <li>
-                    <a class="mdc-button mdc-tab" href="/" aria-selected="false" tabindex="-1">
+                    <a class="mdc-button mdc-tab" href="FoodMap" aria-selected="false" tabindex="-1">
                         <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">About Us</span>
+                            <span class="mdc-tab__text-label">Food Map</span>
                             <span class="mdc-tab-indicator"></span>
                             <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
                         </span>
@@ -31,9 +31,9 @@
                     </a>
                 </li>
                 <li>
-                    <a class="mdc-button mdc-tab" href="foodSources" aria-selected="false" tabindex="-1">
+                    <a class="mdc-button mdc-tab" href="FoodProviders" aria-selected="false" tabindex="-1">
                         <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Food Sources</span>
+                            <span class="mdc-tab__text-label">Food Sharers</span>
                             <span class="mdc-tab-indicator"></span>
                             <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
                         </span>
@@ -50,9 +50,30 @@
                         <span class="mdc-tab__ripple"></span>
                     </a>
                 </li>
+                <li>
+                    <a class="mdc-button mdc-tab" href="/" aria-selected="false" tabindex="-1">
+                        <span class="mdc-tab__content">
+                            <span class="mdc-tab__text-label">About Us</span>
+                            <span class="mdc-tab-indicator"></span>
+                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                        </span>
+                        <span class="mdc-tab__ripple"></span>
+                    </a>
+
+                </li>
                 <li class="divide">|</li>
                 <li>
-                    <a class="mdc-button mdc-tab" href="logIn" aria-selected="false" tabindex="-1">
+                    <a class="mdc-button mdc-tab" href="/account/register" aria-selected="false" tabindex="-1">
+                        <span class="mdc-tab__content">
+                            <span class="mdc-tab__text-label">Register</span>
+                            <span class="mdc-tab-indicator"></span>
+                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                        </span>
+                        <span class="mdc-tab__ripple"></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="mdc-button mdc-tab" href="/account/logIn" aria-selected="false" tabindex="-1">
                         <span class="mdc-tab__content">
                             <span class="mdc-tab__text-label">Log In</span>
                             <span class="mdc-tab-indicator"></span>
@@ -61,8 +82,9 @@
                         <span class="mdc-tab__ripple"></span>
                     </a>
                 </li>
+
             </ul>
-            @Html.Partial("_LoginPartial")
+@*            @Html.Partial("_LoginPartial")*@
         </nav>
     </header>
     <main>
