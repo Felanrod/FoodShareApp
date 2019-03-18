@@ -1,22 +1,47 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "logout" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "capitalize mdc-button mdc-tab" })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        <li>
+            <a class="capitalize mdc-button mdc-tab" href="javascript:document.getElementById('logoutForm').submit()" aria-selected="false" tabindex="-1">
+                <span class="mdc-tab__content">
+                    <span class="mdc-tab__text-label">Log Off</span>
+                    <span class="mdc-tab-indicator"></span>
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                </span>
+                <span class="mdc-tab__ripple"></span>
+            </a>
+        </li>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+    <li>
+        <a class="mdc-button mdc-tab" href="/account/Register" aria-selected="false" tabindex="-1">
+            <span class="mdc-tab__content">
+                <span class="mdc-tab__text-label">Register</span>
+                <span class="mdc-tab-indicator"></span>
+                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+            </span>
+            <span class="mdc-tab__ripple"></span>
+        </a>
+    </li>
+    <li>
+        <a class="mdc-button mdc-tab" href="/account/Login" aria-selected="false" tabindex="-1">
+            <span class="mdc-tab__content">
+                <span class="mdc-tab__text-label">Log In</span>
+                <span class="mdc-tab-indicator"></span>
+                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+            </span>
+            <span class="mdc-tab__ripple"></span>
+        </a>
+    </li>
+    @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
 }
