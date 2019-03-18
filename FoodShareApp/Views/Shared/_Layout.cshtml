@@ -10,13 +10,15 @@
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="~/Content/Styles.css" rel="stylesheet" />
+    <!-- Other head elements -->
+    @Html.Partial("_Favicons")
 </head>
 <body>
     <header class="mdc-top-app-bar mdc-elevation--z4">
         <nav class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <a class="mdc-top-app-bar__title" href="/">
-                    <img id="logo" src="~/Content/Images/logo-alt-colour-2.png" alt="The Food Share Map Logo" />
+                    <img id="logo" src="~/Content/Images/logo.svg" alt="The Food Share Map Logo">
                 </a>
             </section>
             <ul class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
