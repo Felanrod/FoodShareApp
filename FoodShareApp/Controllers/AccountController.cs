@@ -381,6 +381,10 @@ namespace FoodShareApp.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        var currentUser = UserManager.FindByName(user.UserName);
+
+                        var roleResult = UserManager.AddToRole(currentUser.Id, model.FoodRole);
+
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
