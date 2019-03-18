@@ -69,11 +69,13 @@ li {
 }
 
 
-/* Resize logo */
+ Resize logo
 #logo {
     width: 150px;
     height: auto
 }
+
+
 
 /* Change the color of the divider line and copyright text */
 .divide, .copyright {
