@@ -8,7 +8,7 @@ namespace FoodShareApp
 
     public partial class Requester
     {
-        public int RequesterId { get; set; }
+        public string RequesterId { get; set; }
 
         [Required]
         [StringLength(150)]

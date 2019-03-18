@@ -54,9 +54,9 @@ namespace FoodShareApp
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "788286684838074",
+               appSecret: "67fd30d8e80b3f20370d153ef0ba58c5");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
