@@ -8,6 +8,10 @@ namespace FoodShareApp.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        
+        [Required]
+        public string FoodRole { get; set; }
+
     }
 
     public class ExternalLoginListViewModel
@@ -79,6 +83,7 @@ namespace FoodShareApp.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
         public string FoodRole { get; set; }
     }
 
