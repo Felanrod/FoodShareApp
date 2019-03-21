@@ -33,3 +33,5 @@ Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
 - Margot Jorgensen
 - Joel Murphy
 - Omar Shah
+
+#### Adding an edit to see if Azure can succeed in publishing.
