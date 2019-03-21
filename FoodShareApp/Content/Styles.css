@@ -7,7 +7,8 @@
     --mdc-theme-primary: #053D5D; /* The theme primary color - Primary Blue */
     --mdc-theme-secondary: #479CB7; /* The theme secondary color - Secondary Blue */
     --mdc-theme-background: #ECEFF1; /* The theme background color - Background Gray */
-    --mdc-theme-surface: #FFF; /* The theme surface color - Green */
+    --green: #68C39F; /* Green */
+    --mdc-theme-surface: #FFF; /* The theme surface color - White */
     --mdc-theme-on-primary: #FFF; /* Text color on top of a primary background */
     --mdc-theme-on-secondary: #FFF; /* Text color on top of a secondary background */
     --mdc-theme-on-surface: #333; /* Text color on top of a surface background */
@@ -87,6 +88,20 @@ li {
     margin-bottom: 0;
 }
 
+/* Account Layout */
+.account {
+    display: flex;
+    flex-direction: row
+}
+
+.logout {
+    display: flex
+}
+
+.capitalize {
+    text-transform: none;
+}
+
 /* Main */
 body {
     background-color: var(--mdc-theme-background);
@@ -94,10 +109,14 @@ body {
 }
 
 main {
-    max-width: 1366px;
-    margin: 64px auto 0 auto
+    width: 1280px;
+    margin: 64px auto;
 }
 
+#backgroundGreen {
+    background-color: var(--green);
+    transform: scale(1.3)
+}
 /* Cards */
 .card {
     width: 350px
@@ -117,6 +136,7 @@ main {
 .mdc-card__primary {
     padding: 16px;
 }
+
 /* Footer */
 footer.mdc-top-app-bar {
     position: relative;
