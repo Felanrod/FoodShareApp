@@ -1,4 +1,4 @@
-@model IEnumerable <FoodShareApp.FoodProvider>
+@model IEnumerable<FoodShareApp.FoodProvider>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -8,36 +8,33 @@
 <section class="cardGroup">
     @foreach (var foodprovider in Model)
     {
-    <div class="card">
-        <div class="mdc-card">
-            <div class="mdc-card__primary-action mdc-ripple-upgraded" tabindex="0" style="--mdc-ripple-fg-size:210px; --mdc-ripple-fg-scale:2.33984; --mdc-ripple-fg-translate-start:175.8px, 147.3px; --mdc-ripple-fg-translate-end:70px, 60.2375px;">
-                <div class="mdc-card__media mdc-card__media--16-9 mdc-card__media" style="background-image: url(&quot;https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg&quot;);"></div>
-                <div class="mdc-card__primary">
-                    <h2 class="mdc-card__title mdc-typography--headline6">@foodprovider.Name</h2>
-                    <h3 class="mdc-card__subtitle mdc-typography--subtitle2">@foodprovider.ProviderType</h3>
-                    <div class="mdc-card__secondary mdc-typography--body2">@foodprovider.Services</div>
-                </div>
+        <!-- Card -->
+        <div class="card">
+            <!-- Card image -->
+            <div class="view overlay">
+                <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+                <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
             </div>
-            <div class="mdc-card__actions">
-                <div class="mdc-card__action-buttons">
-                    <button class="mdc-button mdc-card__action mdc-card__action--button mdc-ripple-upgraded">Read</button>
-                    <button class="mdc-button mdc-card__action mdc-card__action--button mdc-ripple-upgraded">Bookmark</button>
-                </div>
-                <div class="mdc-card__action-icons">
-                    <button class="mdc-icon-button mdc-card__action mdc-card__action--icon mdc-ripple-upgraded--unbounded mdc-ripple-upgraded" aria-pressed="false" aria-label="Add to favorites" title="Add to favorites" style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
-                        <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i><i class="material-icons mdc-icon-button__icon">favorite_border</i>
-                    </button><button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon mdc-ripple-upgraded--unbounded mdc-ripple-upgraded" title="Share" data-mdc-ripple-is-unbounded="true" style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">share</button>
-                    <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon mdc-ripple-upgraded--unbounded mdc-ripple-upgraded" title="More options" data-mdc-ripple-is-unbounded="true" style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">more_vert</button>
-                </div>
+            <!-- Card content -->
+            <div class="card-body">
+                <!-- Title -->
+                <h4 class="card-title">@foodprovider.Name</h4>
+                <h5 class="card-title">@foodprovider.ProviderType</h5>
+                <!-- Text -->
+                <p class="card-text">@foodprovider.Services</p>
+                <!-- Button -->
+                <a href="#" class="btn btn-primary">Button</a>
             </div>
         </div>
-    </div>
+        <!-- Card -->
     }
     @* ================================ END OF PROVIDERS ================================ *@
 </section>
 <section id="btnJoin">
-    <button id="backgroundGreen" class="mdc-button mdc-button--raised">
-        <span class="mdc-button__label">Join Us</span>
+    <button id="joinUs" class="btn btn-primary">
+        <span>Join Us</span>
     </button>
 </section>
 <section class="cardGroup">
