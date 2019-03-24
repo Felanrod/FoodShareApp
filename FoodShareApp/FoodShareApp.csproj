@@ -292,6 +292,8 @@
     <Content Include="Views\Requesters\Details.cshtml" />
     <Content Include="Views\Requesters\Edit.cshtml" />
     <Content Include="Views\Requesters\Index.cshtml" />
+    <Content Include="Views\Home\Map.cshtml" />
+    <Content Include="Views\Home\ShareFood.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
