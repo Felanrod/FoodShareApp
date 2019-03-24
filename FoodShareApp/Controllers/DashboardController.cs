@@ -1,4 +1,3 @@
-﻿using FoodShareApp.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -8,32 +7,21 @@ using System.Web.Mvc;
 
 namespace FoodShareApp.Controllers
 {
+    [Authorize]
     public class DashboardController : Controller
     {
-        private AdminDashboardModel adminModel = new AdminDashboardModel();
+        private DbFoodShare db = new DbFoodShare();
+
         // GET: Dashboard
         public ActionResult Index()
         {
-            //var adminDashboardModels = new AdminDashboardModel();
-            ////adminDashboardModels.AllFoodProviders = List<db.FoodProviders>;
-            //var foodProviders = db.FoodProviders;
-            //var userId = User.Identity.GetUserId();
-            //var foods = db.Foods.Where(f => f.FoodProviderId == userId);
-
-            //var dashModel = new AdminDashboardModel { AllFoodProviders = foodProviders.ToList(), AllFoods = foods.ToList() };
-            //return View(dashModel);
-            //var foodProviders = db.FoodProviders;
-            //var userId = User.Identity.GetUserId();
-            //var foods = db.Foods.Where(f => f.FoodProviderId == userId);
-            //var dashModel = new 
-            //var dashModel = new AdminDashboardModel { foodProviders.ToList(), AllFoods = foods.ToList() };
-            //adminModel.AllFoodProviders = GetFoodProviders();
-            var dashModel = adminModel;
-            return View(adminModel);
+            var userId = User.Identity.GetUserId();
+            Models.DashboardViewModel myModel = new Models.DashboardViewModel
+            {
+                foodProvider = db.FoodProviders.ToList(),
+                food = db.Foods.ToList().Where(f => f.FoodProviderId == userId)
+            };
+            return View(myModel);
         }
-        //public ActionResult Details(string id)
-        //{
-        //    var dashModel = new AdminDashboardModel
-        //}
     }
 }
