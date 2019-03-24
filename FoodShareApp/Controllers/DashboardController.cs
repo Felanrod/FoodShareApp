@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace FoodShareApp.Controllers
     {
         private DbFoodShare db = new DbFoodShare();
 
-        // GET: TestDash
+        // GET: Dashboard
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();

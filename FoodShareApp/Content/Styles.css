@@ -4,108 +4,146 @@
 
 /* ================================       Colour Variables       ======================================== */
 :root {
-    --mdc-theme-primary: #053D5D; /* The theme primary color - Primary Blue */
-    --mdc-theme-secondary: #479CB7; /* The theme secondary color - Secondary Blue */
-    --mdc-theme-background: #ECEFF1; /* The theme background color - Background Gray */
+    --primary-blue: #053D5D; /* The theme primary color - Primary Blue */
+    --secondary-blue: #479CB7; /* The theme secondary color - Secondary Blue */
+    --background-gray: #ECEFF1; /* The theme background color - Background Gray */
     --green: #68C39F; /* Green */
-    --mdc-theme-surface: #FFF; /* The theme surface color - White */
-    --mdc-theme-on-primary: #FFF; /* Text color on top of a primary background */
-    --mdc-theme-on-secondary: #FFF; /* Text color on top of a secondary background */
-    --mdc-theme-on-surface: #333; /* Text color on top of a surface background */
     font-size: 100%;
 }
+
+/*
+    Theme colours in RGB(A)
+    
+    Material Gray
+        background-color: rgba(158,158,158,.3)
+    Primary Blue
+        5,61,93
+    Secondary Blue
+        71,156,183
+    Green
+        104,195,159
+
+*/
 
 /* ================================       Typography       ======================================== */
 
 /* Headlines */
-.mdc-typography, .mdc-typography--headline1, .mdc-typography--headline2, .mdc-typography--headline3, .mdc-typography--headline4, .mdc-typography--headline5, .mdc-typography--headline6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
-    margin: 0;
 }
 
 /* h1 */
-.mdc-typography--headline1 {
+h1 {
     font-size: 36px;
 }
 
 /* h2 */
-.mdc-typography--headline2 {
+h2 {
     font-size: 30px;
 }
 
 /* h3 */
-.mdc-typography--headline3 {
+h3 {
     font-size: 24px;
 }
 
-/* Subtitles, Body, ect. */
-.mdc-typography--subtitle1, .mdc-typography--subtitle2, .mdc-typography--body1, .mdc-typography--body2, .mdc-typography--caption, .mdc-typography--button, .mdc-typography--overline, .mdc-tab, .mdc-button {
-    font-family: 'Open Sans', sans-serif;
+.lowercase {
+    text-transform: none
 }
 
-.mdc-typography--body1 {
-    font-size: 16px;
+/* ================================       Buttons       ======================================== */
+/* Primary Blue Button */
+.btn-primary {
+    background-color: var(--primary-blue) !important;
 }
 
-.mdc-top-app-bar__title {
-    color: var(--mdc-theme-on-primary);
-    font-family: 'Montserrat', sans-serif;
+.btn-primary:not([disabled]):not(.disabled):active {
+    background-color: var(--primary-blue) !important
 }
 
-/* ================================       Layout       ======================================== */
-
-/* Header */
-.mdc-top-app-bar {
-    background-color: var(--mdc-theme-surface);
-    top: 0;
+/* Secondary Blue Button */
+.btn-secondary {
+    background-color: var(--secondary-blue) !important;
 }
 
-.mdc-top-app-bar__section {
-    margin-bottom: 0;
+.btn-secondary:not([disabled]):not(.disabled):active {
+    background-color: var(--secondary-blue) !important
 }
 
-/* Remove the dot from the navigation */
-li {
-    list-style-type: none;
+/* Green Button */
+.btn-default {
+    background-color: var(--green) !important;
 }
 
-
- Resize logo
-#logo {
-    width: 150px;
-    height: auto
+.btn-default:not([disabled]):not(.disabled):active {
+    background-color: var(--green) !important
 }
 
-
-
-/* Change the color of the divider line and copyright text */
-.divide, .copyright {
-    color: var(--mdc-theme-on-surface)
-}
-
-/* Remove margin to center text */
-.copyright {
-    margin-bottom: 0;
-}
-
-/* Account Layout */
-.account {
+/* Join Button Container */
+#btnJoin {
     display: flex;
-    flex-direction: row
+    justify-content: center;
+    margin: 30px
 }
 
-.logout {
-    display: flex
+/* Actual Button */
+#joinUs {
+    transform: scale(1.2)
 }
 
-.capitalize {
-    text-transform: none;
+/* Form Fields */
+/* Valid */
+.md-form input[type=text].valid, .md-form input[type=password].valid {
+    border-bottom: 1px solid var(--green);
+    box-shadow: 0 1px 0 0 var(--green);
 }
 
+/* Active */
+.md-form input[type="password"]:focus:not([readonly]), .md-form input[type="text"]:focus:not([readonly]) {
+    box-shadow: 0 1px 0 0 var(--secondary-blue);
+    border-bottom: 1px solid var(--secondary-blue)
+}
+/* Active Label */
+.md-form input[type="password"]:focus:not([readonly])+label, .md-form input[type="text"]:focus:not([readonly])+label {
+    color: var(--secondary-blue)
+}
+/* ================================       Layout       ======================================== */
+/* Header */
+li {
+    text-transform: uppercase;
+    transition: .5s;
+    border-bottom: 3px solid transparent;
+}
+
+header li:not(.divider):hover, .currentPage {
+    border-bottom: 3px solid var(--secondary-blue);
+}
+
+.navbar, .navbar form {
+    padding-bottom: 0;
+    border: none
+}
+
+.navbar form {
+    margin-bottom: 0 !important
+}
+
+li a {
+    margin-bottom: 8px;
+}
+.navbar-brand {
+    height: 60px
+}
+/* 
+    Bottom Border
+    margin-bottom: 3px; */
 /* Main */
 body {
-    background-color: var(--mdc-theme-background);
-    padding: 0;
+    background-color: var(--background-gray);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif
 }
 
 main {
@@ -113,10 +151,6 @@ main {
     margin: 64px auto;
 }
 
-#backgroundGreen {
-    background-color: var(--green);
-    transform: scale(1.3)
-}
 /* Cards */
 .card {
     width: 350px
@@ -127,17 +161,11 @@ main {
     justify-content: space-between
 }
 
-#btnJoin {
-    display: flex;
-    justify-content: center;
-    margin: 30px
-}
-
 .mdc-card__primary {
     padding: 16px;
 }
 
 /* Footer */
-footer.mdc-top-app-bar {
-    position: relative;
+footer {
+    margin-top: auto
 }

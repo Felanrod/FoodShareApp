@@ -6,116 +6,92 @@
     <title>@ViewBag.Title - The Food Share Map</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/normalize.css" rel="stylesheet" />
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/css/mdb.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
     <link href="~/Content/Styles.css" rel="stylesheet" />
     <!-- Other head elements -->
     @Html.Partial("_Favicons")
 </head>
-<body>
-    <header class="mdc-top-app-bar mdc-elevation--z4">
-        <nav class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <a class="mdc-top-app-bar__title" href="/">
-                    <img id="logo" src="~/Content/Images/logo.svg" alt="The Food Share Map Logo" />
-                </a>
-            </section>
-            <ul class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <li>
-                    <a class="mdc-button mdc-tab" href="FoodMap" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Food Map</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="mdc-button mdc-tab" href="/FoodProviders/" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Food Sharers</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="mdc-button mdc-tab" href="shareFood" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Share Food</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="mdc-button mdc-tab" href="/" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">About Us</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
-
-                </li>
-                <li class="divide">|</li>
-                @Html.Partial("_LoginPartial")
-
-            </ul>
+<body class="pb-0">
+    <header>
+        <!--Navbar-->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white">
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="/Home">
+                <img src="~/Content/Images/logo.png" alt="The Food Share Map Logo" height="50" class="align-items-center" />
+            </a>
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav"
+                    aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="headerNav">
+                <!-- Links -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="@(ViewBag.Title=="Food Map" ? "currentPage" : "") nav-item">
+                        <a class="nav-link" href="#">The Map</a>
+                    </li>
+                    <li class="@(ViewBag.Title=="Food Sources" ? "currentPage" : "") nav-item">
+                        <a class="nav-link" href="/FoodProviders">Food Sources</a>
+                    </li>
+                    <li class="@(ViewBag.Title=="Share Food" ? "currentPage" : "") nav-item">
+                        <a class="nav-link" href="#">Share Food</a>
+                    </li>
+                    <li class="@(ViewBag.Title=="About Us" ? "currentPage" : "") nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item my-auto pb-1 divider"><span>|</span></li>
+                    @Html.Partial("_LoginPartial")
+                </ul>
+                <!-- Links -->
+            </div>
+            <!-- Collapsible content -->
         </nav>
+        <!--/.Navbar-->
     </header>
-    <main>
+
+    <main class="container">
         @RenderBody()
     </main>
-    <footer class="mdc-top-app-bar mdc-elevation--z4">
-        <div class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <p class="copyright">&copy; Center for Changemaking and Social Innovation</p>
-            </section>
-            <ul class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <li>
-                    <a class="mdc-button mdc-tab" href="about" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Legal</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
+    <footer>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-sm navbar-light white mb-0">
+            <!-- Links -->
+            <p class="nav-item my-auto">&copy; Center for Changemaking and Social Innovation</p>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Legal</a>
                 </li>
-                <li>
-                    <a class="mdc-button mdc-tab" href="portfolio" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Terms of Use</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Terms of Use</a>
                 </li>
-                <li>
-                    <a class="mdc-button mdc-tab" href="contact" aria-selected="false" tabindex="-1">
-                        <span class="mdc-tab__content">
-                            <span class="mdc-tab__text-label">Contact</span>
-                            <span class="mdc-tab-indicator"></span>
-                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                        </span>
-                        <span class="mdc-tab__ripple"></span>
-                    </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
-        </div>
+            <!-- Links -->
+        </nav>
+        <!--/.Navbar-->
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/js/mdb.min.js"></script>
+    <!-- Custom JS -->
     <script src="~/Scripts/Script.js"></script>
 </body>
 </html>
