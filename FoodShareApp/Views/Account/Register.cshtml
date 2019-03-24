@@ -3,40 +3,39 @@
     ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
     <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+    <div class="col-md-offset-2 col-md-10">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+        <div class="md-form">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.LabelFor(m => m.Email, new { @class = "" })
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="md-form">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.LabelFor(m => m.Password, new { @class = "" })
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="md-form">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "" })
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <label>@Html.RadioButtonFor(m => m.FoodRole, "Requester")Food Requester</label>
-            <label>@Html.RadioButtonFor(m => m.FoodRole, "Provider")Food Sharer</label>
+        <div class="form-group">
+            <div class="custom-control custom-radio custom-control-inline">
+                @Html.RadioButtonFor(m => m.FoodRole, "Requester", new { @class = "custom-control-input" })
+                @Html.LabelFor(m => m.FoodRole, new { @class = "custom-control-label" })
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                @Html.RadioButtonFor(m => m.FoodRole, "Provider", new { @class = "custom-control-input" })
+                @Html.LabelFor(m => m.FoodRole, new { @class = "custom-control-label" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div class="form-group">
             <input type="submit" class="btn btn-default" value="Register" />
         </div>
     </div>
