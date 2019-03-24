@@ -4,41 +4,51 @@
 }
 
 <h2>@ViewBag.Title</h2>
+<hr />
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    <div class="col-md-offset-2 col-md-10">
-        @Html.ValidationSummary("", new { @class = "text-danger" })
+    <!-- Card -->
+        <div class="card">
+            <!-- Card content -->
+            <div class="card-body">
+                <!-- Title -->
+                <h4 class="card-title">Create a new account.</h4>
+                <!-- Text -->
+                <hr />
+                <div class="">
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
 
-        <div class="md-form">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            @Html.LabelFor(m => m.Email, new { @class = "" })
-        </div>
-        <div class="md-form">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.LabelFor(m => m.Password, new { @class = "" })
-        </div>
-        <div class="md-form">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "" })
-        </div>
-        <div class="form-group">
-            <div class="custom-control custom-radio custom-control-inline">
-                @Html.RadioButtonFor(m => m.FoodRole, "Requester", new { @id = "requester", @class = "custom-control-input" })
-                @Html.LabelFor(m => m.FoodRole, "Requester", new { @for = "requester", @class = "custom-control-label" })
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                @Html.RadioButtonFor(m => m.FoodRole, "Sharer", new { @id = "sharer", @class = "custom-control-input" })
-                @Html.LabelFor(m => m.FoodRole, "Sharer", new { @for = "sharer", @class = "custom-control-label" })
-            </div>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
+                    <div class="md-form">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.LabelFor(m => m.Email, new { @class = "" })
+                    </div>
+                    <div class="md-form">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.LabelFor(m => m.Password, new { @class = "" })
+                    </div>
+                    <div class="md-form">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "" })
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline ml-3">
+                            @Html.RadioButtonFor(m => m.FoodRole, "Requester", new { @id = "requester", @class = "custom-control-input" })
+                            @Html.LabelFor(m => m.FoodRole, "Requester", new { @for = "requester", @class = "custom-control-label" })
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            @Html.RadioButtonFor(m => m.FoodRole, "Sharer", new { @id = "sharer", @class = "custom-control-input" })
+                            @Html.LabelFor(m => m.FoodRole, "Sharer", new { @for = "sharer", @class = "custom-control-label" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-default" value="Register" />
+                    </div>
+                </div>
+            </div> <!-- Card Body -->
+        </div> <!-- Card -->
+
 }
 
 @section Scripts {

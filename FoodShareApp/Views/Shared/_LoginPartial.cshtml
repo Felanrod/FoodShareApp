@@ -1,24 +1,25 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "logout" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "logout d-flex py-auto" }))
     {
         @Html.AntiForgeryToken()
-
-        <li class="nav-item">
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "capitalize nav-link" })
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()" aria-selected="false" tabindex="-1">Log Out</a>
-        </li>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "lowercase nav-link" })
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()" aria-selected="false" tabindex="-1">Log Out</a>
+            </li>
+        </ul>
     }
 }
 else
 {
-    <li class="nav-item">
-        <a href="/account/Register" class="nav-link">Register</a>
+    <li class="@(ViewBag.Title=="Register" ? "currentPage" : "") nav-item">
+        <a href="/account/Register" class="nav-link">Join Us!</a>
     </li>
-    <li class="nav-item">
+    <li class="@(ViewBag.Title=="Log in" ? "currentPage" : "") nav-item">
         <a href="/account/Login" class="nav-link">Log In</a>
     </li>
 }
