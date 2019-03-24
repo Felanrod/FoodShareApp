@@ -1,0 +1,150 @@
+﻿@model FoodShareApp.Models.DashboardViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="dashboardTabs">
+    <h2>Admin Dashboard</h2>
+    <ul>
+        <li>
+            <a href="#dashFood">Food Sharers</a>
+        </li>
+        <li>
+            <a href="#dashFood">My Food</a>
+        </li>
+    </ul>
+</section>
+
+<section id="dashFoodProviders">
+    <h3>Food Providers</h3>
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Logo
+            </th>
+            <th>
+                Street
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                PostalCode
+            </th>
+            <th>
+                PhoneNumber
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Provider Type
+            </th>
+            <th>
+                Website
+            </th>
+            <th>
+                Verified
+            </th>
+            <th>
+                Admin
+            </th>
+        </tr>
+        @foreach (var foodProvider in Model.foodProvider)
+        {
+            <tr>
+                <td>
+                    @foodProvider.Name
+                </td>
+                <td>
+                    <img src="@foodProvider.LogoUrl" width="100" alt="" />
+                </td>
+                <td>
+                    @foodProvider.Street
+                </td>
+                <td>
+                    @foodProvider.City
+                </td>
+                <td>
+                    @foodProvider.PostalCode
+                </td>
+                <td>
+                    @foodProvider.PhoneNumber
+                </td>
+                <td>
+                    @foodProvider.Email
+                </td>
+                <td>
+                    @foodProvider.ProviderType.ProviderType1
+                </td>
+                <td>
+                    <a href="@foodProvider.Website">@foodProvider.Website</a>
+                </td>
+                <td>
+                    @foodProvider.Verified
+                </td>
+                <td>
+                    @foodProvider.Admin
+                </td>
+            </tr>
+        }
+    </table>
+</section>
+<section id="dashFoods">
+    <h3>Foods</h3>
+    <table class="table">
+        <tr>
+            <th>
+                Food Type
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Food Provider Id
+            </th>
+            <th>
+                FoodAmountId
+            </th>
+            <th>
+                Urgent
+            </th>
+            <th>
+                Notes
+            </th>
+            <th>
+                DateCreated
+            </th>
+        </tr>
+        @foreach (var food in Model.food)
+        {
+            <tr>
+                <td>
+                    @food.FoodType.FoodType1
+                </td>
+                <td>
+                    @food.FoodName
+                </td>
+                <td>
+                    @food.FoodProviderId
+                </td>
+                <td>
+                    @food.FoodAmountId
+                </td>
+                <td>
+                    @food.Urgent
+                </td>
+                <td>
+                    @food.Notes
+                </td>
+                <td>
+                    @food.DateCreated
+                </td>
+            </tr>
+        }
+    </table>
+</section>
