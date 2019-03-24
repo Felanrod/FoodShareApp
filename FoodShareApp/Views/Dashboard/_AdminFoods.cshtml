@@ -1,0 +1,55 @@
+﻿@model IEnumerable<FoodShareApp.Food>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodType.FoodType1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodAmountId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Urgent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodType.FoodType1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodAmountId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Urgent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FoodId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.FoodId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.FoodId })
+            </td>
+        </tr>
+    }
+
+</table>

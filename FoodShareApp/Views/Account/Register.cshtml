@@ -27,12 +27,12 @@
         </div>
         <div class="form-group">
             <div class="custom-control custom-radio custom-control-inline">
-                @Html.RadioButtonFor(m => m.FoodRole, "Requester", new { @class = "custom-control-input" })
-                @Html.LabelFor(m => m.FoodRole, new { @class = "custom-control-label" })
+                @Html.RadioButtonFor(m => m.FoodRole, "Requester", new { @id = "requester", @class = "custom-control-input" })
+                @Html.LabelFor(m => m.FoodRole, "Requester", new { @for = "requester", @class = "custom-control-label" })
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                @Html.RadioButtonFor(m => m.FoodRole, "Provider", new { @class = "custom-control-input" })
-                @Html.LabelFor(m => m.FoodRole, new { @class = "custom-control-label" })
+                @Html.RadioButtonFor(m => m.FoodRole, "Sharer", new { @id = "sharer", @class = "custom-control-input" })
+                @Html.LabelFor(m => m.FoodRole, "Sharer", new { @for = "sharer", @class = "custom-control-label" })
             </div>
         </div>
         <div class="form-group">

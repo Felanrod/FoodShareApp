@@ -300,3 +300,5 @@ __pycache__/
 
 # OpenCover UI analysis results
 OpenCover/
+/FoodShareApp/DBAWSFoodShare.cs
+/FoodShareApp/DBFAHFoodShare.cs
