@@ -221,6 +221,7 @@
     <Content Include="Content\Images\ashoka-Canada.jpg" />
     <Content Include="browserconfig.xml" />
     <Content Include="Content\Images\logo.svg" />
+    <Content Include="Content\Images\mapbox-map-mockup.jpg" />
     <Content Include="Content\Images\Steve-Biko.jpg" />
     <Content Include="Content\Images\student-large.svg" />
     <Content Include="Content\Images\volunteer-large.svg" />
