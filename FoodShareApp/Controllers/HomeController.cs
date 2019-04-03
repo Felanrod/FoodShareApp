@@ -29,6 +29,15 @@ namespace FoodShareApp.Controllers
 
             return View();
         }
+
+        public ActionResult Terms()
+        {
+            ViewBag.Message = "Terms of the Website.";
+
+            return View();
+        }
+
+
         public ActionResult Map()
         {
             ViewBag.Message = "Welcome to Jurassic Park.";
