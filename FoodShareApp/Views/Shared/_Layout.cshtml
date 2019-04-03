@@ -28,6 +28,11 @@
             <a class="navbar-brand" href="/Home">
                 <img src="~/Content/Images/logo.svg" alt="The Food Share Map Logo" height="50" class="align-items-center" />
             </a>
+            <ul class="navbar-nav">
+                <li class="@(ViewBag.Title=="Dashboard" ? "currentPage" : "") nav-item">
+                    <a class="nav-link" href="/Dashboard">Dashboard</a>
+                </li>
+            </ul>
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav"
                     aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,9 +50,6 @@
                     </li>
                     <li class="@(ViewBag.Title=="Share Food" ? "currentPage" : "") nav-item">
                         <a class="nav-link" href="/Foods">Share Food</a>
-                    </li>
-                    <li class="@(ViewBag.Title=="Dashboard" ? "currentPage" : "") nav-item">
-                        <a class="nav-link" href="/Dashboard">Dashboard</a>
                     </li>
                     <li class="@(ViewBag.Title=="About Us" ? "currentPage" : "") nav-item">
                         <a class="nav-link" href="/Home/About">About Us</a>
@@ -72,13 +74,13 @@
             <p class="nav-item my-auto">&copy; Center for Changemaking and Social Innovation</p>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Legal</a>
+                    <a class="nav-link" href="/Home/Legal">Legal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Terms of Use</a>
+                    <a class="nav-link" href="/Home/Terms">Terms of Use</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="/Home/Contact">Contact</a>
                 </li>
             </ul>
             <!-- Links -->
