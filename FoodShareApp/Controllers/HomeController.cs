@@ -16,19 +16,29 @@ namespace FoodShareApp.Controllers
             return View(foodProviders);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
+
+        public ActionResult Terms()
+        {
+            ViewBag.Message = "Terms of the Website.";
+
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "About the FoodShare Map.";
+
+            return View();
+        }
+
+
+
         public ActionResult Map()
         {
             ViewBag.Message = "Welcome to Jurassic Park.";
