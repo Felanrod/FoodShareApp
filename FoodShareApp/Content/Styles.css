@@ -165,6 +165,10 @@ main {
     padding: 16px;
 }
 
+#locateFood, #communityEvents {
+    transform: scale(2);
+}
+
 /* Footer */
 footer {
     margin-top: auto
