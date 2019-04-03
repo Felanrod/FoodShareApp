@@ -38,6 +38,13 @@ namespace FoodShareApp.Controllers
         }
 
 
+        public ActionResult Legal()
+        {
+            ViewBag.Message = "Legal and Trademark.";
+
+            return View();
+        }
+
 
         public ActionResult Map()
         {

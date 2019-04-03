@@ -308,6 +308,7 @@
     <Content Include="Views\Home\Map.cshtml" />
     <Content Include="Views\Home\ShareFood.cshtml" />
     <Content Include="Views\Home\Terms.cshtml" />
+    <Content Include="Views\Home\Legal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
