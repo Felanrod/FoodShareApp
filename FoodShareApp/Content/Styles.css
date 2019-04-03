@@ -169,6 +169,14 @@ main {
     transform: scale(2);
 }
 
+/* mj for About page card with important links*/
+.custom-header {
+    background-color: var(--green) !important;
+    color: white;
+}
+
+
+
 /* Footer */
 footer {
     margin-top: auto
