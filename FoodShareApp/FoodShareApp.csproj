@@ -213,13 +213,17 @@
     <Content Include="Content\Images\family-large.svg" />
     <Content Include="Content\Images\favicon-32x32.png" />
     <Content Include="Content\Images\foodbank-large.svg" />
+    <Content Include="Content\Images\foodwasteregion.jpg" />
     <Content Include="Content\Images\information-large.svg" />
+    <Content Include="Content\Images\logo-about.svg" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\logo.svg" />
     <Content Include="android-chrome-192x192.png" />
     <Content Include="apple-touch-icon.png" />
     <Content Include="Content\Images\ashoka-Canada.jpg" />
     <Content Include="browserconfig.xml" />
+    <Content Include="Content\Images\Steve-Biko.jpg" />
+    <Content Include="Content\Images\student-large.svg" />
     <Content Include="Content\Images\volunteer-large.svg" />
     <Content Include="favicon-16x16.png" />
     <Content Include="favicon-32x32.png" />

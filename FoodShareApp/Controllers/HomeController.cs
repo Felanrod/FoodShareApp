@@ -37,6 +37,14 @@ namespace FoodShareApp.Controllers
             return View();
         }
 
+        public ActionResult About()
+        {
+            ViewBag.Message = "About the FoodShare Map.";
+
+            return View();
+        }
+
+
 
         public ActionResult Map()
         {
