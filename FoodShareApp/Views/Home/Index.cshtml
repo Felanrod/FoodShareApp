@@ -4,33 +4,42 @@
 }
 
 
-<h1 class="mdc-typography--headline1">Sharing Food</h1>
-<section class="cardGroup">
-    @foreach (var foodprovider in Model)
-    {
-        <!-- Card -->
-        <div class="card">
-            <!-- Card image -->
-            <div class="view overlay">
-                <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
-                <a href="#!">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
+<h1 class="text-center">Sharing Food</h1>
+<h2 class="text-center mb-4">Share Food? Need Food? Join Us!</h2>
+<section>
+    <!--Grid row-->
+    <div class="row d-flex">
+        @foreach (var foodprovider in Model)
+        {
+            <!--Grid column-->
+            <div class="col-md-4 mb-3 d-flex">
+                <!-- Card -->
+                <div class="card">
+                    <!-- Card image -->
+                    <div class="view overlay">
+                        <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+                        <a href="#!">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <!-- Card content -->
+                    <div class="card-body d-flex flex-column ">
+                        <!-- Title -->
+                        <h4 class="card-title">@foodprovider.Name</h4>
+                        <h5 class="card-title">@foodprovider.ProviderType.ProviderType1</h5>
+                        <!-- Text -->
+                        <p class="card-text mb-auto">@foodprovider.Services</p>
+                        <!-- Button -->
+                        <div class="card-footer bg-white mt-3 px-0 pb-0">
+                            <a href="#" class="btn btn-secondary">Map It!</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Card content -->
-            <div class="card-body">
-                <!-- Title -->
-                <h4 class="card-title">@foodprovider.Name</h4>
-                <h5 class="card-title">@foodprovider.ProviderType.ProviderType1</h5>
-                <!-- Text -->
-                <p class="card-text">@foodprovider.Services</p>
-                <!-- Button -->
-                <a href="#" class="btn btn-primary">Button</a>
-            </div>
-        </div>
-        <!-- Card -->
-    }
-    @* ================================ END OF PROVIDERS ================================ *@
+            <!-- Card -->
+        }
+        @* ================================ END OF PROVIDERS ================================ *@
+    </div>
 </section>
 <section id="btnJoin">
     <a href="/account/Register" id="joinUs" class="btn btn-primary">
@@ -41,7 +50,7 @@
     <div>
         <h2 class="text-center">Locate Food</h2>
         <!-- Card -->
-        <div class="card">
+        <div id="locateFood" class="card">
             <!-- Card image -->
             <div class="view overlay">
                 <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
@@ -55,7 +64,7 @@
     <div>
         <h2 class="text-center">Community Events</h2>
         <!-- Card -->
-        <div class="card">
+        <div id="communityEvents" class="card">
             <!-- Card image -->
             <div class="view overlay">
                 <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
