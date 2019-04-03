@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -221,6 +221,7 @@
     <Content Include="Content\Images\ashoka-Canada.jpg" />
     <Content Include="browserconfig.xml" />
     <Content Include="Content\Images\logo.svg" />
+    <Content Include="Content\Images\mapbox-map-mockup.jpg" />
     <Content Include="Content\Images\Steve-Biko.jpg" />
     <Content Include="Content\Images\student-large.svg" />
     <Content Include="Content\Images\volunteer-large.svg" />
