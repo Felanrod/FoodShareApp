@@ -87,8 +87,9 @@ namespace FoodShareApp.Views
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Name,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,Services,Website,Verified,Admin")] FoodProvider foodProvider)
+        public ActionResult Edit([Bind(Include = "Name,FoodProviderId,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,FoodProviderTypeId,Services,Website,Verified,Admin")] FoodProvider foodProvider)
         {
+            var editId = foodProvider.FoodProviderId;
             if (ModelState.IsValid)
             {
                 db.Entry(foodProvider).State = EntityState.Modified;
