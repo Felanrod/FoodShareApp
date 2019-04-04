@@ -44,13 +44,5 @@ namespace FoodShareApp.Controllers
 
             return View();
         }
-
-
-        public ActionResult Map()
-        {
-            ViewBag.Message = "Welcome to Jurassic Park.";
-
-            return View();
-        }
     }
 }

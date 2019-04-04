@@ -179,6 +179,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\RequestersController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Models\DbFoodShare.cs" />
@@ -304,10 +305,10 @@
     <Content Include="Views\Requesters\Edit.cshtml" />
     <Content Include="Views\Requesters\Index.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Home\Map.cshtml" />
     <Content Include="Views\Home\ShareFood.cshtml" />
     <Content Include="Views\Home\Terms.cshtml" />
     <Content Include="Views\Home\Legal.cshtml" />
+    <Content Include="Views\Map\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
