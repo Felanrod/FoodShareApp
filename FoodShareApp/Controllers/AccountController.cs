@@ -386,7 +386,10 @@ namespace FoodShareApp.Controllers
                         var roleResult = UserManager.AddToRole(currentUser.Id, model.FoodRole);
 
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToLocal(returnUrl);
+                        if (model.FoodRole == "Requester")
+                            return RedirectToAction("Create", "Requesters");
+                        else
+                            return RedirectToAction("Create", "FoodProviders");
                     }
                 }
                 AddErrors(result);
