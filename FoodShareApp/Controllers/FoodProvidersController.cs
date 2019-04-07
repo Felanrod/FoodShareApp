@@ -135,30 +135,6 @@ namespace FoodShareApp.Views
             base.Dispose(disposing);
         }
 
-        // GET: FoodProviders/Register
-        //[Authorize(Roles = "Provider")]
-        //public ActionResult Register()
-        //{
-        //    return View();
-        //}
-
-        //// POST: FoodProvider/Register
-        //[Authorize(Roles = "Provider")]
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Register(FormCollection values)
-        //{
-        //    var provider = new FoodProvider();
-        //    TryUpdateModel(provider);
-
-        //    string id = User.Identity.GetUserId();
-        //    provider.FoodProviderId = id;
-
-        //    db.FoodProviders.Add(provider);
-        //    db.SaveChanges();
-
-        //    return RedirectToAction("Index", "FoodProviders");
-        //}
 
 
     }

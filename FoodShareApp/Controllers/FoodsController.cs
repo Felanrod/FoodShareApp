@@ -39,6 +39,7 @@ namespace FoodShareApp.Views
             return View(food);
         }
 
+
         // GET: Foods/Create
         public ActionResult Create()
         {
@@ -46,6 +47,7 @@ namespace FoodShareApp.Views
             ViewBag.RightNow = DateTime.Now;
             ViewBag.FoodProviderId = userId;
             ViewBag.FoodTypeId = new SelectList(db.FoodTypes, "FoodTypeId", "FoodType1");
+            ViewBag.FoodAmountId = new SelectList(db.FoodAmounts, "FoodAmountId", "FoodAmount1");
             return View();
         }
 

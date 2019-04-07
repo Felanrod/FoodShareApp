@@ -42,9 +42,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FoodAmountId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FoodAmountId, "FoodAmountId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FoodAmountId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("FoodAmountId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.FoodAmountId, "", new { @class = "text-danger" })
             </div>
         </div>
