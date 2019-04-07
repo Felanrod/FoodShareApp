@@ -171,13 +171,52 @@ main {
 
 /* mj for About page card with important links*/
 .custom-header {
+    background-color: #68C39F; /* default supported fallback style */
     background-color: var(--green) !important;
     color: white;
 }
 
+/*mj note: vertical line on registration page and login page for visual separation of sections*/
+.vertical-hr {
+    border-right: 3px solid rgba(104,195,159, 0.6);
+    height: 95%;
+}
 
+
+/*mj note:colour font awesome on reg form. For others too like menu but not on menu if we want this*/
+i.fas {
+    color: #479cb7;
+    margin-right: 5px;
+}
+
+/*mj note not set up yet*/
+.fa-cog {
+    color: #68C39F !important;
+    margin-right: 5px;
+}
+/*mj note: note set up yet. mj hack to allow the arrow to be narrower but you can buy font-a to get thinner version this doesn't look any good on other font awesome icons*/
+.fa-arrow-up {
+    -webkit-text-stroke: 2px white;
+}
+
+/*mj not set up yet*/
+.icon-foodbank {
+    float:left;
+    margin-right: 5px;
+    overflow: auato;
+
+}
 
 /* Footer */
 footer {
     margin-top: auto
+}
+
+/* mj note the more info link on the registration page isn't needed on wider screens just mobile  so this hides it on bigger screens*/
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    .more-info {
+    display: none;
+}
 }

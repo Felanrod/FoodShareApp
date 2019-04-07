@@ -1,56 +1,82 @@
 ﻿@model FoodShareApp.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Join Our Community";
 }
 
 <h2>@ViewBag.Title</h2>
-<hr />
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <!-- Card -->
-        <div class="card">
-            <!-- Card content -->
-            <div class="card-body">
-                <!-- Title -->
-                <h4 class="card-title">Create a new account.</h4>
-                <!-- Text -->
-                <hr />
-                <div class="">
-                    @Html.ValidationSummary("", new { @class = "text-danger" })
 
-                    <div class="md-form">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.LabelFor(m => m.Email, new { @class = "" })
+<div class="row shadow  mx-auto p-3 mb-5 bg-white rounded  ">
+    <div class="col-sm-12 col-md-5">
+
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <!-- Title -->
+            <h4 class="mt-2">Two Easy Steps</h4>
+            <hr />
+            <p>
+                <span class="text-custom">Step 1:</span> Let us know if you wish to request food or share food. <span class="more-info">What's the difference: <a href="#user-info"><i class="fas fa-lg fa-question-circle"></i> </a></span>
+            </p>
+            <!-- Text -->
+            <div class="">
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+                    <div class="custom-control custom-radio custom-control-inline ml-3">
+                        @Html.RadioButtonFor(m => m.FoodRole, "Request Food", new { @id = "requester", @class = "custom-control-input" })
+                        @Html.LabelFor(m => m.FoodRole, "Request Food", new { @for = "requester", @class = "custom-control-label" })
                     </div>
-                    <div class="md-form">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.LabelFor(m => m.Password, new { @class = "" })
-                    </div>
-                    <div class="md-form">
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "" })
-                    </div>
-                    <div class="form-group">
-                        <div class="custom-control custom-radio custom-control-inline ml-3">
-                            @Html.RadioButtonFor(m => m.FoodRole, "Requester", new { @id = "requester", @class = "custom-control-input" })
-                            @Html.LabelFor(m => m.FoodRole, "Requester", new { @for = "requester", @class = "custom-control-label" })
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            @Html.RadioButtonFor(m => m.FoodRole, "Sharer", new { @id = "sharer", @class = "custom-control-input" })
-                            @Html.LabelFor(m => m.FoodRole, "Sharer", new { @for = "sharer", @class = "custom-control-label" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-default" value="Register" />
+                    <div class="custom-control custom-radio custom-control-inline ">
+                        @Html.RadioButtonFor(m => m.FoodRole, "Share Food", new { @id = "sharer", @class = "custom-control-input" })
+                        @Html.LabelFor(m => m.FoodRole, "Share Food", new { @for = "sharer", @class = "custom-control-label" })
                     </div>
                 </div>
-            </div> <!-- Card Body -->
-        </div> <!-- Card -->
 
-}
+                <hr />
+                <p><span class="text-custom">Step 2:</span> <span class="text-muted">  Add your email address and choose a password</span></p>
+                <div class="md-form">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Email, new { @class = "" })
+                </div>
+                <div class="md-form">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Password, new { @class = "" })
+                </div>
+                <div class="md-form">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "" })
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" value="Join Us" />
+                </div>
+            </div>
+
+
+        }
+    </div>
+
+    <!-- Vertical line between two areas -->
+    <div class="col-1">
+        <div class="col-6 vertical-hr mt-2">
+        </div>
+    </div>
+
+
+    <div class="col-sm-12 col-md-5">
+        <h4 class="mt-2" id="user-info">Request Food:</h4> Join as a Food Requester and you can see all the sources of food on The FoodShare Map plus special sources from time to time.  This can include extra food from a catered event, farmers' orchards etc. By selecting this we can notify you about new sources as they become available
+        <h4 class="mt-5">Share Food: </h4>Join as a Food Sharer and you or your organization can share food through The FoodShare Map. This option is for  foodbanks, catering companies, farmers, supermarkets or anyone with extra food to share. You can set up a profile to let people in need of food find you. And customize what food you have and when it is available.
+    </div>
+
+
+</div>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
