@@ -29,9 +29,13 @@
                 <img src="~/Content/Images/logo.svg" alt="The Food Share Map Logo" height="50" class="align-items-center" />
             </a>
             <ul class="navbar-nav">
-                <li class="@(ViewBag.Title=="Dashboard" ? "currentPage" : "") nav-item">
-                    <a class="nav-link" href="/Dashboard">Dashboard</a>
-                </li>
+                @if (User.IsInRole("Admin, Sharer, SuperAdmin"))
+                {
+                    <li class="@(ViewBag.Title=="Dashboard" ? "currentPage" : "") nav-item">
+                        <a class="nav-link" href="/Dashboard">Dashboard</a>
+                    </li>
+                }
+
             </ul>
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav"
@@ -48,9 +52,12 @@
                     <li class="@(ViewBag.Title=="Food Sources" ? "currentPage" : "") nav-item">
                         <a class="nav-link" href="/FoodProviders">Food Sources</a>
                     </li>
+                    @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Sharer"))
+                    {
                     <li class="@(ViewBag.Title=="Share Food" ? "currentPage" : "") nav-item">
-                        <a class="nav-link" href="/Foods">Share Food</a>
+                        <a class="nav-link" href="/Foods/Create">Share Food</a>
                     </li>
+                    }
                     <li class="@(ViewBag.Title=="About Us" ? "currentPage" : "") nav-item">
                         <a class="nav-link" href="/Home/About">About Us</a>
                     </li>

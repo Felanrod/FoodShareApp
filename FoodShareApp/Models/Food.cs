@@ -22,6 +22,7 @@ namespace FoodShareApp
 
         public bool? Urgent { get; set; }
 
+        [DataType(DataType.MultilineText)]
         public string Notes { get; set; }
 
         public DateTime DateCreated { get; set; }
