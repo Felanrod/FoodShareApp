@@ -15,53 +15,92 @@
     <div class="card-deck-wrapper">
         <div class="row">
             <!-- Main Row -->
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <!-- column -->
-                <div id='map' style='width: 400px; height: 300px;'></div>
-                <script>
-                    mapboxgl.accessToken = 'pk.eyJ1IjoidGhlZm9vZHNoYXJlbWFwIiwiYSI6ImNqdG5vemRqcTAwbHUzeXM1b2NodTByMDQifQ.l6qyYH6-ng1viSSGoLR2EQ';
-                    var map = new mapboxgl.Map({
-                        container: 'map',
-                        style: 'mapbox://styles/mapbox/streets-v11',
-                        minZoom: 5,
-                        center: [-79.6682, 44.4119],
-                        zoom: 13
-                    });
-                    map.on("load", function () {
-                        /* Image: An image is loaded and added to the map ~/Content/Images/favicon-32x32.png. */
-                        map.loadImage("https://i.imgur.com/MK4NUzI.png", function (error, image) {
-                            if (error) throw error;
-                            map.addImage("custom-marker", image);
-                            /* Style layer: A style layer ties together the source and image and specifies how they are displayed on the map. */
-                            map.addLayer({
-                                id: "markers",
-                                type: "symbol",
-                                /* Source: A data source specifies the geographic coordinate where the image marker gets placed. */
-                                source: {
-                                    type: "geojson",
-                                    data: {
-                                        type: 'FeatureCollection',
-                                        features: [
-                                            {
-                                                type: 'Feature',
-                                                properties: {},
-                                                geometry: {
-                                                    type: "Point",
-                                                    coordinates: [-79.6682, 44.4119]
-                                                }
-                                            }
-                                        ]
-                                    }
-                                },
-                                layout: {
-                                    "icon-image": "custom-marker",
-                                }
-                            });
-                        });
-                    });
-                </script>
+                <div id='map' style='width: 100%; height: 500px;'></div>
+                
                 <h3 class="text-center">Mapping a Better Food System</h3>
             </div><!-- End  column -->
+            <div class="col-md-4">
+                <h3>Food Providers</h3>
+                <table class="table">
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                    </tr>
+                    @foreach (var foodProvider in Model.foodProvider)
+                    {
+                        <tr class="sharerValues">
+                            <td>
+                                @foodProvider.Name
+                            </td>
+                            <td>
+                                @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
         </div> <!-- /Main Row -->
     </div><!-- /card deck wrapper -->
 </section>
+<script>
+    L.mapbox.accessToken = 'pk.eyJ1IjoidGhlZm9vZHNoYXJlbWFwIiwiYSI6ImNqdTd2cG5tMjB4cjU0ZXBmNzN1MXBrZnQifQ.PZrIhpsjSPo9wtijyJZG7A';
+
+    let map = L.mapbox.map('map')
+        .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+    const addresses = document.querySelectorAll('.sharerValues td:nth-of-type(2n)');
+    const initialAddress = addresses[0].textContent;
+    //let map = new mapboxgl.Map({
+    //    container: 'map',
+    //    style: 'mapbox://styles/mapbox/streets-v11',
+    //    minZoom: 5,
+    //    center: [-79.6682, 44.4119],
+    //    zoom: 13
+    //});
+
+    const geocoder = L.mapbox.geocoder('mapbox.places');
+
+    addresses.forEach(address => {
+        address.addEventListener('click', (e) => {
+            e.preventDefault();
+            //console.log(this.textContent);
+            //alert(e.target.textContent);
+            newAddress(e.target.textContent);
+        });
+    });
+
+    newAddress(initialAddress);
+    //newAddress('4031 3rd Line Cookstown, ON, L0L1L0');
+
+    //geocoder.query('4031 3rd Line Cookstown, ON, L0L1L0', showMap);
+    function newAddress(address) {
+        geocoder.query(address, showMap);
+    }
+    //const pin = '/Images/logo.svg';
+    function showMap(err, data) {
+        // The geocoder can return an area, like a city, or a
+        // point, like an address. Here we handle both cases,
+        // by fitting the map bounds to an area or zooming to a point.
+        if (data.lbounds) {
+            map.fitBounds(data.lbounds);
+        } else if (data.latlng) {
+            map.setView([data.latlng[0], data.latlng[1]], 15);
+            L.marker([data.latlng[0], data.latlng[1]], {
+                icon: L.mapbox.marker.icon({
+                    'marker-size': 'large',
+                    'marker-color': '#479CB7'
+                })
+            }).addTo(map);
+        }
+    }
+</script>
+
+
+@*<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>*@
+@*<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>*@
+@*<script src="~/Scripts/mapping.js"></script>*@
