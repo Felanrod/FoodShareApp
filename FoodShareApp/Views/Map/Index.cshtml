@@ -48,59 +48,11 @@
         </div> <!-- /Main Row -->
     </div><!-- /card deck wrapper -->
 </section>
-<script>
-    L.mapbox.accessToken = 'pk.eyJ1IjoidGhlZm9vZHNoYXJlbWFwIiwiYSI6ImNqdTd2cG5tMjB4cjU0ZXBmNzN1MXBrZnQifQ.PZrIhpsjSPo9wtijyJZG7A';
-
-    let map = L.mapbox.map('map')
-        .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
-    const addresses = document.querySelectorAll('.sharerValues td:nth-of-type(2n)');
-    const initialAddress = addresses[0].textContent;
-    //let map = new mapboxgl.Map({
-    //    container: 'map',
-    //    style: 'mapbox://styles/mapbox/streets-v11',
-    //    minZoom: 5,
-    //    center: [-79.6682, 44.4119],
-    //    zoom: 13
-    //});
-
-    const geocoder = L.mapbox.geocoder('mapbox.places');
-
-    addresses.forEach(address => {
-        address.addEventListener('click', (e) => {
-            e.preventDefault();
-            //console.log(this.textContent);
-            //alert(e.target.textContent);
-            newAddress(e.target.textContent);
-        });
-    });
-
-    newAddress(initialAddress);
-    //newAddress('4031 3rd Line Cookstown, ON, L0L1L0');
-
-    //geocoder.query('4031 3rd Line Cookstown, ON, L0L1L0', showMap);
-    function newAddress(address) {
-        geocoder.query(address, showMap);
-    }
-    //const pin = '/Images/logo.svg';
-    function showMap(err, data) {
-        // The geocoder can return an area, like a city, or a
-        // point, like an address. Here we handle both cases,
-        // by fitting the map bounds to an area or zooming to a point.
-        if (data.lbounds) {
-            map.fitBounds(data.lbounds);
-        } else if (data.latlng) {
-            map.setView([data.latlng[0], data.latlng[1]], 15);
-            L.marker([data.latlng[0], data.latlng[1]], {
-                icon: L.mapbox.marker.icon({
-                    'marker-size': 'large',
-                    'marker-color': '#479CB7'
-                })
-            }).addTo(map);
-        }
-    }
-</script>
+@*<script>
+    
+</script>*@
 
 
 @*<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>*@
 @*<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>*@
-@*<script src="~/Scripts/mapping.js"></script>*@
+<script src="~/Scripts/mapping.js"></script>

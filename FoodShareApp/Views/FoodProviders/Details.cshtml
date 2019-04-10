@@ -10,11 +10,17 @@
 <div>
     <h4>FoodProvider</h4>
     <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <img src="@Html.DisplayFor(model => model.LogoUrl)" width="100%" height:"auto" alt="@Html.DisplayFor(model => model.Name)" />
+            </div>
+            <div class="col-6">
+                <div id='map' style='width: 100%; height: 250px;'></div>
+            </div>
+        </div>
+    </div>
     <dl class="dl-horizontal">
-
-        <dd>
-            <img src="@Html.DisplayFor(model => model.LogoUrl)" alt="@Html.DisplayFor(model => model.Name)"/>
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -25,43 +31,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Street)
+            Address
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Street)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Province)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Province)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PostalCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PostalCode)
+        <dd id="sharerAddress">
+            @Html.DisplayFor(model => model.Street) @Html.DisplayFor(model => model.City), @Html.DisplayFor(model => model.Province), @Html.DisplayFor(model => model.PostalCode)
         </dd>
 
         <dt>
@@ -121,6 +95,7 @@
         </dd>*@
 
     </dl>
+    
 </div>
 <div>
     <form action="/" method="post">
@@ -131,3 +106,4 @@
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.FoodProviderId }) |*@
     @Html.ActionLink("Back to List", "Index")
 </p>
+<script src="~/Scripts/mapping.js"></script>
