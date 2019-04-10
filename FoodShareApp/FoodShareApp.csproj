@@ -319,6 +319,7 @@
     <Content Include="Views\Home\Terms.cshtml" />
     <Content Include="Views\Home\Legal.cshtml" />
     <Content Include="Views\Map\Index.cshtml" />
+    <Content Include="Views\Dashboard\Notifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

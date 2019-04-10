@@ -29,7 +29,7 @@
                 <img src="~/Content/Images/logo.svg" alt="The Food Share Map Logo" height="50" class="align-items-center" />
             </a>
             <ul class="navbar-nav">
-                @if (User.IsInRole("Admin, Sharer, SuperAdmin"))
+                @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
                 {
                     <li class="@(ViewBag.Title=="Dashboard" ? "currentPage" : "") nav-item">
                         <a class="nav-link" href="/Dashboard">Dashboard</a>

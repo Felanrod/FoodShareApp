@@ -1,0 +1,194 @@
+﻿@model IEnumerable<FoodShareApp.FoodProvider>
+
+@{
+    ViewBag.Title = "Notifications";
+}
+
+<h2>Notifications</h2>
+
+    <section id="dashFoodProviders">
+        <h3>Unverified Food Providers</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Logo
+                </th>
+                <th>
+                    Street
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    PostalCode
+                </th>
+                <th>
+                    PhoneNumber
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Provider Type
+                </th>
+                <th>
+                    Website
+                </th>
+                @*<th>
+                    Verified
+                </th>*@
+                <th>
+                    Admin
+                </th>
+            </tr>
+
+            @foreach (var foodProvider in Model)
+            {
+                if (!foodProvider.Verified)
+                {
+
+            <tr>
+                <td>
+                    @foodProvider.Name
+                </td>
+                <td>
+                    <img src="@foodProvider.LogoUrl" width="100" alt="" />
+                </td>
+                <td>
+                    @foodProvider.Street
+                </td>
+                <td>
+                    @foodProvider.City
+                </td>
+                <td>
+                    @foodProvider.PostalCode
+                </td>
+                <td>
+                    @foodProvider.PhoneNumber
+                </td>
+                <td>
+                    @foodProvider.Email
+                </td>
+                <td>
+                    @foodProvider.ProviderType.ProviderType1
+                </td>
+                <td>
+                    <a href="@foodProvider.Website">@foodProvider.Website</a>
+                </td>
+                <td>
+                    @foodProvider.Admin
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
+                    @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
+                </td>
+
+            </tr>
+                } // end if
+            }
+    </section>
+
+    <table class="table">
+
+        @*<tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProviderType.ProviderType1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Street)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Province)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Services)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Website)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verified)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Admin)
+            </th>
+            <th></th>
+        </tr>*@
+
+        @*@foreach (var item in Model) {*@
+        @*<tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProviderType.ProviderType1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogoUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Province)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Services)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verified)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Admin)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.FoodProviderId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.FoodProviderId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.FoodProviderId })
+            </td>
+        </tr>
+        }*@
+
+    </table>

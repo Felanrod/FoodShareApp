@@ -38,7 +38,7 @@ namespace FoodShareApp.Views
         }
 
         // GET: FoodProviders/Create
-        [Authorize(Roles = "Sharer")]
+        [Authorize(Roles = "SuperAdmin, Admin, Sharer")]
         public ActionResult Create()
         {
             ViewBag.FoodProviderTypeId = new SelectList(db.FoodProviderTypes, "FoodProviderTypeId", "ProviderType1");
@@ -50,7 +50,6 @@ namespace FoodShareApp.Views
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Sharer")]
         public ActionResult Create([Bind(Include = "Name,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,FoodProviderTypeId,Services,Website,Verified,Admin")] FoodProvider foodProvider)
         {
             var userId = User.Identity.GetUserId();
