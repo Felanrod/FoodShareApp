@@ -11,20 +11,17 @@
     <h4>FoodProvider</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.LogoUrl)" alt="@Html.DisplayFor(model => model.Name)"/>
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LogoUrl)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LogoUrl)
         </dd>
 
         <dt>
@@ -107,7 +104,7 @@
             @Html.DisplayFor(model => model.Website)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Verified)
         </dt>
 
@@ -121,11 +118,16 @@
 
         <dd>
             @Html.DisplayFor(model => model.Admin)
-        </dd>
+        </dd>*@
 
     </dl>
 </div>
+<div>
+    <form action="/" method="post">
+        <button class="btn btn-primary" type="submit">Request Food</button>
+    </form>
+</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FoodProviderId }) |
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.FoodProviderId }) |*@
     @Html.ActionLink("Back to List", "Index")
 </p>

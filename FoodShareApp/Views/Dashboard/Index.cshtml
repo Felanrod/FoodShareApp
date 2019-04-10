@@ -13,11 +13,14 @@
         <li>
             <a href="#dashFood">My Food</a>
         </li>
+        <li>
+            @Html.ActionLink("Notifications", "Notifications")
+        </li>
     </ul>
 </section>
-
 <section id="dashFoodProviders">
-    <h3>Food Providers</h3>
+
+    <h3>Verified Food Providers</h3>
     <table class="table">
         <tr>
             <th>
@@ -47,51 +50,62 @@
             <th>
                 Website
             </th>
-            <th>
+            @*<th>
                 Verified
-            </th>
+            </th>*@
             <th>
                 Admin
             </th>
         </tr>
+
         @foreach (var foodProvider in Model.foodProvider)
         {
-            <tr>
-                <td>
-                    @foodProvider.Name
-                </td>
-                <td>
-                    <img src="@foodProvider.LogoUrl" width="100" alt="" />
-                </td>
-                <td>
-                    @foodProvider.Street
-                </td>
-                <td>
-                    @foodProvider.City
-                </td>
-                <td>
-                    @foodProvider.PostalCode
-                </td>
-                <td>
-                    @foodProvider.PhoneNumber
-                </td>
-                <td>
-                    @foodProvider.Email
-                </td>
-                <td>
-                    @foodProvider.ProviderType.ProviderType1
-                </td>
-                <td>
-                    <a href="@foodProvider.Website">@foodProvider.Website</a>
-                </td>
-                <td>
-                    @foodProvider.Verified
-                </td>
-                <td>
-                    @foodProvider.Admin
-                </td>
-            </tr>
+            if (foodProvider.Verified)
+            {
+
+        <tr>
+            <td>
+                @foodProvider.Name
+            </td>
+            <td>
+                <img src="@foodProvider.LogoUrl" width="100" alt="" />
+            </td>
+            <td>
+                @foodProvider.Street
+            </td>
+            <td>
+                @foodProvider.City
+            </td>
+            <td>
+                @foodProvider.PostalCode
+            </td>
+            <td>
+                @foodProvider.PhoneNumber
+            </td>
+            <td>
+                @foodProvider.Email
+            </td>
+            <td>
+                @foodProvider.ProviderType.ProviderType1
+            </td>
+            <td>
+                <a href="@foodProvider.Website">@foodProvider.Website</a>
+            </td>
+            @*<td>
+            @foodProvider.Verified
+        </td>*@
+            <td>
+                @foodProvider.Admin
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
+                @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
+            </td>
+
+        </tr>
+            } // end if
         }
+
     </table>
 </section>
 <section id="dashFoods">

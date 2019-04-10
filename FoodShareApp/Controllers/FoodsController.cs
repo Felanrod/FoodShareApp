@@ -15,6 +15,7 @@ namespace FoodShareApp.Views
     {
         private DbFoodShare db = new DbFoodShare();
 
+        [Authorize(Roles = "SuperAdmin, Admin, Sharer")]
         // GET: Foods
         public ActionResult Index()
         {
@@ -48,6 +49,10 @@ namespace FoodShareApp.Views
             ViewBag.FoodProviderId = userId;
             ViewBag.FoodTypeId = new SelectList(db.FoodTypes, "FoodTypeId", "FoodType1");
             ViewBag.FoodAmountId = new SelectList(db.FoodAmounts, "FoodAmountId", "FoodAmount1");
+
+            // get list of providers to see if they are verified
+            ViewBag.FoodProvider = db.FoodProviders.Find(userId);
+
             return View();
         }
 

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace FoodShareApp.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="SuperAdmin, Admin")]
     public class DashboardController : Controller
     {
         private DbFoodShare db = new DbFoodShare();
@@ -22,6 +22,13 @@ namespace FoodShareApp.Controllers
                 food = db.Foods.ToList().Where(f => f.FoodProviderId == userId)
             };
             return View(myModel);
+        }
+
+        public ActionResult Notifications(string User)
+        {
+            ViewBag.UserName = User;
+            var foodProviders = db.FoodProviders;
+            return View(foodProviders.ToList());
         }
     }
 }
