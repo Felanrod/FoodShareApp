@@ -25,6 +25,9 @@ namespace FoodShareApp.Views
         // GET: FoodProviders/Details/5
         public ActionResult Details(string id)
         {
+            var RequesterId = User.Identity.GetUserId();
+            ViewBag.Requester = db.Requesters.Find(RequesterId);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,6 +39,25 @@ namespace FoodShareApp.Views
             }
             return View(foodProvider);
         }
+
+        // POST detail
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details([Bind(Include = "ToId,FromId")] Notification FoodRequest)
+        {
+            FoodRequest.DateCreated = DateTime.Now;
+            FoodRequest.TypeId = 1;
+
+            if (ModelState.IsValid)
+            {
+                db.Notifications.Add(FoodRequest);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+
 
         // GET: FoodProviders/Create
         [Authorize(Roles = "SuperAdmin, Admin, Sharer")]

@@ -12,17 +12,16 @@ namespace FoodShareApp
 
         public int TypeId { get; set; }
 
-        public int ToId { get; set; }
+        public string ToId { get; set; }
 
-        public int FromId { get; set; }
+        public string FromId { get; set; }
 
-        [Required]
         [StringLength(500)]
         public string Message { get; set; }
 
         public bool Viewed { get; set; }
 
-        public DateTime DateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
 
         public virtual NotificationType NotificationType { get; set; }
     }
