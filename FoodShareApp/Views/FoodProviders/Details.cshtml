@@ -97,11 +97,25 @@
     </dl>
     
 </div>
+    @if (ViewBag.Requester != null)
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 <div>
-    <form action="/" method="post">
-        <button class="btn btn-primary" type="submit">Request Food</button>
-    </form>
+    @*@Html.HiddenFor("FromId", @ViewBag.Requester.RequesterId)*@
+    @*@Html.HiddenFor("ToId", Model.FoodProviderId)*@
+    <input type="hidden" name="FromId" value="@ViewBag.Requester.RequesterId" />
+    <input type="hidden" name="ToId" value="@Model.FoodProviderId" />
 </div>
+<div class="form-group">
+    <div="col-md-offset-2 col-md-10">
+        <button class="btn btn-primary" type="submit">Request Food</button>
+    </div>
+</div>
+        }
+    }
+
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.FoodProviderId }) |*@
     @Html.ActionLink("Back to List", "Index")
