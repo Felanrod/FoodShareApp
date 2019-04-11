@@ -10,7 +10,7 @@ namespace FoodShareApp
     {
         public int EventId { get; set; }
 
-        public int FoodProviderAdminId { get; set; }
+        public string FoodProviderAdminId { get; set; }
 
         [Required]
         [StringLength(500)]
