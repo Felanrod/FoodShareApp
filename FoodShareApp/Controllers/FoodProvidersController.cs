@@ -52,10 +52,30 @@ namespace FoodShareApp.Views
             {
                 db.Notifications.Add(FoodRequest);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
             return View();
+        }
+
+        // GET: FoodProviders/Notifications
+        [Authorize(Roles = "SuperAdmin, Admin, Sharer")]
+        public ActionResult Notification()
+        {
+            var ProviderId = User.Identity.GetUserId();
+            var Provider = db.Notifications.Where(f => f.ToId == ProviderId).ToList();
+            foreach(var item in Provider)
+            {
+                var requesterid = item.FromId;
+                ViewBag.Requester = db.Requesters.Where(f => f.RequesterId == requesterid).ToList();                
+            }
+            if (Provider == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(Provider);
         }
 
 
