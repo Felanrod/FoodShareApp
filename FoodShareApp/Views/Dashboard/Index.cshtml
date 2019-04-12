@@ -55,48 +55,47 @@
                     Admin
                 </th>
             </tr>
-            </thead>
-            @foreach (var foodProvider in Model.foodProvider)
+        </thead>
+        @foreach (var foodProvider in Model.foodProvider)
+        {
+            if (foodProvider.Verified)
             {
-                if (foodProvider.Verified)
-                {
-                    <tr>
-                        <td data-title="Name">
-                            @foodProvider.Name
-                        </td>
-                        <td data-title="Image">
-                            <img src="@foodProvider.LogoUrl" width="100" alt="" />
-                        </td>
-                        <td data-title="Address" >
-                            @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
-                        </td>
-                        </td>
-                        <td data-title="Phone" >
-                            @foodProvider.PhoneNumber
-                        </td>
-                        <td data-title="Email" >
-                            @foodProvider.Email
-                        </td>
-                        <td data-title="Type">
-                            @foodProvider.ProviderType.ProviderType1
-                        </td>
-                        <td data-title="Website"  >
-                            <a href="@foodProvider.Website">@foodProvider.Website</a>
-                        </td>
-                        <td>
-                            @foodProvider.Verified
-                        </td>
-                        <td data-title="Admin" >
-                            @foodProvider.Admin
-                        </td>
-                        <td data-title="Task">
-                            @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
-                            @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
-                        </td>
-                    </tr>
-                } // end if
-            }
-</table>
+                <tr>
+                    <td data-title="Name">
+                        @foodProvider.Name
+                    </td>
+                    <td data-title="Image">
+                        <img src="@foodProvider.LogoUrl" width="100" alt="" />
+                    </td>
+                    <td data-title="Address" >
+                        @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
+                    </td>
+                    <td data-title="Phone" >
+                        @foodProvider.PhoneNumber
+                    </td>
+                    <td data-title="Email" >
+                        @foodProvider.Email
+                    </td>
+                    <td data-title="Type">
+                        @foodProvider.ProviderType.ProviderType1
+                    </td>
+                    <td data-title="Website"  >
+                        <a href="@foodProvider.Website">@foodProvider.Website</a>
+                    </td>
+                    <td>
+                        @foodProvider.Verified
+                    </td>
+                    <td data-title="Admin" >
+                        @foodProvider.Admin
+                    </td>
+                    <td data-title="Task">
+                        @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
+                        @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
+                    </td>
+                </tr>
+            } // end if
+        }
+    </table>
 </section>
 <section id="dashFoods">
     <h2>Foods</h2>
