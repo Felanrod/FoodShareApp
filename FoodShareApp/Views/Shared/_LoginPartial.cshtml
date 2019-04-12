@@ -9,7 +9,7 @@
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "lowercase nav-link" })
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()" aria-selected="false" tabindex="-1">Log Out</a>
+                <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()" aria-selected="false" tabindex="-1"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Log Out</a>
             </li>
         </ul>
     }
@@ -17,9 +17,9 @@
 else
 {
     <li class="@(ViewBag.Title=="Register" ? "currentPage" : "") nav-item">
-        <a href="/account/Register" class="nav-link">Join Us!</a>
+        <a href="/account/Register" class="nav-link"><i class="fas fa-user-plus" aria-hidden="true"></i>Join Us!</a>
     </li>
     <li class="@(ViewBag.Title=="Log in" ? "currentPage" : "") nav-item">
-        <a href="/account/Login" class="nav-link">Log In</a>
+        <a href="/account/Login" class="nav-link"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Log In</a>
     </li>
 }

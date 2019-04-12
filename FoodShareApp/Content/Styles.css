@@ -60,6 +60,28 @@ h3 {
 .btn-primary:not([disabled]):not(.disabled):active {
     background-color: var(--primary-blue) !important
 }
+/*adding login button cta next to join us cta style differently w just outline and transparent bg but can't get it to work
+    it looks like md is overriding bootstrap
+*/
+
+.btn .btn-outline-primary {
+	background: none;
+	padding: 12px 22px;
+}
+
+.btn .btn-outline-primary{
+	border: 2px solid #ECEFF1 !important ;
+	color: #0099cc  !important;
+}
+
+.btn .btn-outline-primary:not([disabled]):not(.disabled):active {
+    border-color: #ECEFF1 !important;
+    background: transparent !important
+    
+}
+
+
+
 
 /* Secondary Blue Button */
 .btn-secondary {
@@ -80,16 +102,17 @@ h3 {
 }
 
 /* Join Button Container */
-#btnJoin {
+#btnJoin{
     display: flex;
     justify-content: center;
     margin: 30px
 }
 
 /* Actual Button */
-#joinUs {
+#joinUs{
     transform: scale(1.2)
 }
+
 
 /* Form Fields */
 /* Valid */
@@ -156,6 +179,11 @@ main {
     width: 350px
 }
 
+/*class for cards that need to be wider than 350px eg front page events make sure it goes after card class*/
+.card-custom {
+    width: 100%;
+}
+
 .cardGroup {
     display: flex;
     justify-content: space-between
@@ -189,7 +217,7 @@ i.fas {
     margin-right: 5px;
 }
 
-/*mj note not set up yet*/
+/*mj dashboard icon*/
 .fa-cog {
     color: #68C39F !important;
     margin-right: 5px;
@@ -199,7 +227,7 @@ i.fas {
     -webkit-text-stroke: 2px white;
 }
 
-/*mj not set up yet*/
+/*mj not set up yet I'd like to replace the icon we are using for share in the nav*/
 .icon-foodbank {
     float:left;
     margin-right: 5px;
@@ -207,10 +235,109 @@ i.fas {
 
 }
 
+/*table styles*/
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    
+
+}
+
+th, td {
+    padding: 1rem 0.25rem 1rem .5rem;
+    text-align: left;
+    border-bottom: 2px solid rgba(71,156,183, 0.3);
+}
+
+th {
+    background-color: #479CB7;
+    color: white;
+    text-transform: uppercase;
+}
+
+
+
+@media (max-width: 47.9375em) {
+    table {
+        border: 0;
+        border-bottom-width: 0.0625em;
+        /* border-bottom-style: solid;*/
+        padding-bottom: 1.4375em;
+        padding-bottom: 0;
+        display: block;
+        width: 100%;
+       
+        /* Responsive tables. Thanks to Aaron Gustafson for this: codepen.io/aarongustafson/
+        Make everything display block so it aligns vertically 
+        Labeling adding a data-title attribute to the cells lets us add text before the content to provide the missing context
+        Markup for the view: <td data-title="Name">Generated Content Here</td>
+        Display: Name: Generated Content Here */
+    }
+
+        table caption { /*we don't have a caption on our table but should consider doing this.*/
+            display: block;
+        }
+
+        table thead {
+            display: none;
+            visibility: hidden;
+        }
+
+        table tbody, table tr, table th, table td {
+            border: 0;
+            display: block;
+  
+            text-align: left;
+            white-space: normal;
+        }
+
+
+    th, td {
+        padding: .50rem;
+     
+    }
+
+   
+
+     table tr {
+            margin-bottom: 1.5em;
+    }
+
+    table th[data-title]:before,
+    table td[data-title]:before {
+        content: attr(data-title) ": ";
+        font-weight: bold;
+    }
+
+    table td {
+        word-wrap: break-word;
+    }
+
+
+        table th:not([data-title]) {
+            font-weight: bold;
+        }
+
+
+
+        table td:empty {
+            display: none;
+        }
+}
+
+
+
+
 /* Footer */
 footer {
     margin-top: auto
 }
+
+
+
+
+
 
 /* mj note the more info link on the registration page isn't needed on wider screens just mobile  so this hides it on bigger screens*/
 
@@ -220,6 +347,8 @@ footer {
     display: none;
 }
 }
+
+/*removes the pipe for mobile version of nav menu/*/
 
 @media (max-width: 992px) {
     ul li span {
