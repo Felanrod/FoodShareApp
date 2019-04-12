@@ -6,27 +6,30 @@ using System.Web.Mvc;
 
 namespace FoodShareApp.Controllers
 {
-    public class EventController : Controller
+    public class EventsController : Controller
     {
-        // GET: Event
+        private DbFoodShare db = new DbFoodShare();
+        // GET: Events
         public ActionResult Index()
         {
-            return View();
+            //var events = db.Events.Include(e => e.FoodType).Where(f => f.FoodProviderId == userId);
+            //foods = foods.Where(f => f.FoodProviderId.Equals(User.Identity.GetUserId()));
+            return View(db.Events.ToList());
         }
 
-        // GET: Event/Details/5
+        // GET: Events/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Event/Create
+        // GET: Events/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Event/Create
+        // POST: Events/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +45,13 @@ namespace FoodShareApp.Controllers
             }
         }
 
-        // GET: Event/Edit/5
+        // GET: Events/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Event/Edit/5
+        // POST: Events/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +67,13 @@ namespace FoodShareApp.Controllers
             }
         }
 
-        // GET: Event/Delete/5
+        // GET: Events/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Event/Delete/5
+        // POST: Events/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
