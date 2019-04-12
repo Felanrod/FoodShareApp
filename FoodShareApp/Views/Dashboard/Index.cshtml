@@ -30,13 +30,7 @@
                 Logo
             </th>
             <th>
-                Street
-            </th>
-            <th>
-                City
-            </th>
-            <th>
-                PostalCode
+                Address
             </th>
             <th>
                 PhoneNumber
@@ -71,13 +65,7 @@
                 <img src="@foodProvider.LogoUrl" width="100" alt="" />
             </td>
             <td>
-                @foodProvider.Street
-            </td>
-            <td>
-                @foodProvider.City
-            </td>
-            <td>
-                @foodProvider.PostalCode
+                @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
             </td>
             <td>
                 @foodProvider.PhoneNumber
@@ -119,10 +107,10 @@
                 Name
             </th>
             <th>
-                Food Provider Id
+                Provider Id
             </th>
             <th>
-                FoodAmountId
+                Amount
             </th>
             <th>
                 Urgent
@@ -131,7 +119,7 @@
                 Notes
             </th>
             <th>
-                DateCreated
+                Date Created
             </th>
         </tr>
         @foreach (var food in Model.food)
@@ -159,6 +147,57 @@
                     @food.DateCreated
                 </td>
             </tr>
+        }
+    </table>
+</section>
+<section id="dashEvents">
+    <h3>Events</h3>
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Contact
+            </th>
+            <th>
+                Notes
+            </th>
+        </tr>
+        @if (Model.events != null)
+        {
+        foreach (var _event in Model.events)
+        {
+            <tr>
+                <td>
+                    @_event.EventName
+                </td>
+                <td>
+                    @_event.EventDate
+                </td>
+                <td>
+                    @_event.EventTime
+                </td>
+                <td>
+                    @_event.Location
+                </td>
+                <td>
+                    @_event.Phone | @_event.Email
+                </td>
+                <td>
+                    @_event.Notes
+                </td>
+            </tr>
+        }
         }
     </table>
 </section>
