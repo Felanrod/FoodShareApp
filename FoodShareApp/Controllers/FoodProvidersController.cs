@@ -64,18 +64,24 @@ namespace FoodShareApp.Views
         public ActionResult Notification()
         {
             var ProviderId = User.Identity.GetUserId();
-            var Provider = db.Notifications.Where(f => f.ToId == ProviderId).ToList();
-            foreach(var item in Provider)
+            List<Notification> ProviderNotifications = db.Notifications.Where(f => f.ToId == ProviderId).ToList();
+
+            var Requesters = new List<Requester>();
+            foreach(var item in ProviderNotifications)
             {
                 var requesterid = item.FromId;
-                ViewBag.Requester = db.Requesters.Where(f => f.RequesterId == requesterid).ToList();                
+                Requester Requester = db.Requesters.FirstOrDefault(f => f.RequesterId == requesterid);
+                Requesters.Add(Requester);
             }
-            if (Provider == null)
+
+            ViewBag.Requesters = Requesters;
+
+            if (ProviderNotifications == null)
             {
                 return HttpNotFound();
             }
 
-            return View(Provider);
+            return View(ProviderNotifications);
         }
 
 

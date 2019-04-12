@@ -8,10 +8,13 @@
     <h1>Administrators Dashboard</h1>
     <ul>
         <li>
-            <a href="#dashFood">Food Sharers</a>
+            <a href="#dashFoodProviders">Food Sharers</a>
         </li>
         <li>
-            <a href="#dashFood">My Food</a>
+            <a href="#dashFoods">My Food</a>
+        </li>
+        <li>
+            <a href="#dashEvents">My Food</a>
         </li>
         <li>
             @Html.ActionLink("Notifications", "Notifications")
@@ -19,7 +22,6 @@
     </ul>
 </section>
 <section id="dashFoodProviders">
-
     <h2>Verified Food Providers</h2>
     <table class="table shadow p-3 mb-5 bg-white rounded">
         <caption>Verified Food Providers</caption>
@@ -32,13 +34,7 @@
                     Logo
                 </th>
                 <th>
-                    Street
-                </th>
-                <th>
-                    City
-                </th>
-                <th>
-                    PostalCode
+                    Address
                 </th>
                 <th>
                     PhoneNumber
@@ -52,11 +48,9 @@
                 <th>
                     Website
                 </th>
-@*if you uncomment the next heading it will stretch the heading to the end of the table. I didn't do this in case it caused some other problem.*@
-
-                @*<th>
+                <th>
                     Verified
-                </th>*@
+                </th>
                 <th>
                     Admin
                 </th>
@@ -66,7 +60,6 @@
             {
                 if (foodProvider.Verified)
                 {
-
                     <tr>
                         <td data-title="Name">
                             @foodProvider.Name
@@ -74,14 +67,9 @@
                         <td data-title="Image">
                             <img src="@foodProvider.LogoUrl" width="100" alt="" />
                         </td>
-                        <td data-title="Street" >
-                            @foodProvider.Street
+                        <td data-title="Address" >
+                            @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
                         </td>
-                        <td data-title="City">
-                            @foodProvider.City
-                        </td>
-                        <td data-title="Postal Code" >
-                            @foodProvider.PostalCode
                         </td>
                         <td data-title="Phone" >
                             @foodProvider.PhoneNumber
@@ -95,9 +83,9 @@
                         <td data-title="Website"  >
                             <a href="@foodProvider.Website">@foodProvider.Website</a>
                         </td>
-                        @*<td>
+                        <td>
                             @foodProvider.Verified
-                        </td>*@
+                        </td>
                         <td data-title="Admin" >
                             @foodProvider.Admin
                         </td>
@@ -166,4 +154,58 @@
                 </tr>
             }
 </table>
+</section>
+<section id="dashEvents">
+    <h2>Events</h2>
+    <table class="table shadow p-3 mb-5 bg-white rounded">
+      <caption>Events</caption>
+      <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Contact
+            </th>
+            <th>
+                Notes
+            </th>
+        </tr>
+      </thead>
+        @if (Model.events != null)
+        {
+        foreach (var _event in Model.events)
+        {
+            <tr>
+                <td data-title="Name">
+                    @_event.EventName
+                </td>
+                <td data-title="Date">
+                    @_event.EventDate
+                </td>
+                <td data-title="Time">
+                    @_event.EventTime
+                </td>
+                <td data-title="Location">
+                    @_event.Location
+                </td>
+                <td data-title="Contact">
+                    @_event.Phone | @_event.Email
+                </td>
+                <td data-title="Notes">
+                    @_event.Notes
+                </td>
+            </tr>
+        }
+        }
+    </table>
 </section>

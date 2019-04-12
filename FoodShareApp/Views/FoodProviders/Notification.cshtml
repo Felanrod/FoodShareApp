@@ -5,11 +5,14 @@
 }
 
 <h2>Notification</h2>
-@foreach (var item in @ViewBag.Requester)
-{
-    <li><a href="../../Requesters/Details/@item.RequesterId">@item.Name</a> sent you a food request</li>
-}
-@*@foreach (var item in Model)
+<ul>
+    @foreach (var item in @ViewBag.Requesters)
+    {
+        <li><a href="../../Requesters/Details/@item.RequesterId">@item.Name</a> sent you a food request</li>
+    }
+</ul>
+@*<h2>Requester Ids</h2>
+@foreach (var item in Model)
 {
 <li>
     @Html.DisplayFor(modelItem => item.FromId)
