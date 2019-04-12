@@ -5,7 +5,7 @@
 }
 
 <section id="dashboardTabs">
-    <h2>Admin Dashboard</h2>
+    <h1>Administrators Dashboard</h1>
     <ul>
         <li>
             <a href="#dashFood">Food Sharers</a>
@@ -20,145 +20,150 @@
 </section>
 <section id="dashFoodProviders">
 
-    <h3>Verified Food Providers</h3>
-    <table class="table">
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Logo
-            </th>
-            <th>
-                Street
-            </th>
-            <th>
-                City
-            </th>
-            <th>
-                PostalCode
-            </th>
-            <th>
-                PhoneNumber
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                Provider Type
-            </th>
-            <th>
-                Website
-            </th>
-            @*<th>
-                Verified
-            </th>*@
-            <th>
-                Admin
-            </th>
-        </tr>
+    <h2>Verified Food Providers</h2>
+    <table class="table shadow p-3 mb-5 bg-white rounded">
+        <caption>Verified Food Providers</caption>
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Logo
+                </th>
+                <th>
+                    Street
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    PostalCode
+                </th>
+                <th>
+                    PhoneNumber
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Provider Type
+                </th>
+                <th>
+                    Website
+                </th>
+@*if you uncomment the next heading it will stretch the heading to the end of the table. I didn't do this in case it caused some other problem.*@
 
-        @foreach (var foodProvider in Model.foodProvider)
-        {
-            if (foodProvider.Verified)
+                @*<th>
+                    Verified
+                </th>*@
+                <th>
+                    Admin
+                </th>
+            </tr>
+            </thead>
+            @foreach (var foodProvider in Model.foodProvider)
             {
+                if (foodProvider.Verified)
+                {
 
-        <tr>
-            <td>
-                @foodProvider.Name
-            </td>
-            <td>
-                <img src="@foodProvider.LogoUrl" width="100" alt="" />
-            </td>
-            <td>
-                @foodProvider.Street
-            </td>
-            <td>
-                @foodProvider.City
-            </td>
-            <td>
-                @foodProvider.PostalCode
-            </td>
-            <td>
-                @foodProvider.PhoneNumber
-            </td>
-            <td>
-                @foodProvider.Email
-            </td>
-            <td>
-                @foodProvider.ProviderType.ProviderType1
-            </td>
-            <td>
-                <a href="@foodProvider.Website">@foodProvider.Website</a>
-            </td>
-            @*<td>
-            @foodProvider.Verified
-        </td>*@
-            <td>
-                @foodProvider.Admin
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
-                @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
-            </td>
-
-        </tr>
-            } // end if
-        }
-
-    </table>
+                    <tr>
+                        <td data-title="Name">
+                            @foodProvider.Name
+                        </td>
+                        <td data-title="Image">
+                            <img src="@foodProvider.LogoUrl" width="100" alt="" />
+                        </td>
+                        <td data-title="Street" >
+                            @foodProvider.Street
+                        </td>
+                        <td data-title="City">
+                            @foodProvider.City
+                        </td>
+                        <td data-title="Postal Code" >
+                            @foodProvider.PostalCode
+                        </td>
+                        <td data-title="Phone" >
+                            @foodProvider.PhoneNumber
+                        </td>
+                        <td data-title="Email" >
+                            @foodProvider.Email
+                        </td>
+                        <td data-title="Type">
+                            @foodProvider.ProviderType.ProviderType1
+                        </td>
+                        <td data-title="Website"  >
+                            <a href="@foodProvider.Website">@foodProvider.Website</a>
+                        </td>
+                        @*<td>
+                            @foodProvider.Verified
+                        </td>*@
+                        <td data-title="Admin" >
+                            @foodProvider.Admin
+                        </td>
+                        <td data-title="Task">
+                            @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
+                            @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
+                        </td>
+                    </tr>
+                } // end if
+            }
+</table>
 </section>
 <section id="dashFoods">
-    <h3>Foods</h3>
-    <table class="table">
-        <tr>
-            <th>
-                Food Type
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Food Provider Id
-            </th>
-            <th>
-                FoodAmountId
-            </th>
-            <th>
-                Urgent
-            </th>
-            <th>
-                Notes
-            </th>
-            <th>
-                DateCreated
-            </th>
-        </tr>
-        @foreach (var food in Model.food)
-        {
+    <h2>Foods</h2>
+    <table class="table shadow p-3 mb-5 bg-white rounded">
+        <caption>Foods</caption>
+        <thead>
             <tr>
-                <td>
-                    @food.FoodType.FoodType1
-                </td>
-                <td>
-                    @food.FoodName
-                </td>
-                <td>
-                    @food.FoodProviderId
-                </td>
-                <td>
-                    @food.FoodAmountId
-                </td>
-                <td>
-                    @food.Urgent
-                </td>
-                <td>
-                    @food.Notes
-                </td>
-                <td>
-                    @food.DateCreated
-                </td>
+                <th>
+                    Food Type
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Food Provider Id
+                </th>
+                <th>
+                    FoodAmountId
+                </th>
+                <th>
+                    Urgent
+                </th>
+                <th>
+                    Notes
+                </th>
+                <th>
+                    DateCreated
+                </th>
             </tr>
-        }
-    </table>
+            </thead>
+            @foreach (var food in Model.food)
+            {
+                <tr>
+                    <td data-title="Type">
+                        @food.FoodType.FoodType1
+                    </td>
+                    <td data-title="Food Name">
+                        @food.FoodName
+                    </td>
+                    <td data-title="Provider Id">
+                        @food.FoodProviderId
+                    </td>
+                    <td data-title="Amount Id" >
+                        @food.FoodAmountId
+                    </td>
+                    <td data-title="Urgent">
+                        @food.Urgent
+                    </td>
+                    <td data-title="Notes" >
+                        @food.Notes
+                    </td>
+                    <td data-title="Date Created" >
+                        @food.DateCreated
+                    </td>
+                </tr>
+            }
+</table>
 </section>

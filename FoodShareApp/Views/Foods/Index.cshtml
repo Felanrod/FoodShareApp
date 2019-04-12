@@ -5,70 +5,73 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Foods Table - Must be logged in</h2>
+<h1>Foods Table - Must be logged in</h1>
 
 @if (Request.IsAuthenticated)
 {
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FoodType.FoodType1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FoodName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FoodProviderId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FoodAmountId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Urgent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Notes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    <table class="table shadow p-3 mb-5 bg-white rounded">
+        <caption>Foods Table</caption>
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FoodType.FoodType1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FoodName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FoodProviderId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FoodAmountId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Urgent)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Notes)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateCreated)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.FoodId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.FoodId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.FoodId })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.FoodType.FoodType1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FoodName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FoodProviderId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FoodAmountId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Urgent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateCreated)
+                </th>
+                <th></th>
             </tr>
-        }
+            </thead>
 
-    </table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td data-title="Food Type" >
+                        @Html.DisplayFor(modelItem => item.FoodType.FoodType1)
+                    </td>
+                    <td data-title="Food Name" >
+                        @Html.DisplayFor(modelItem => item.FoodName)
+                    </td>
+                    <td data-title="Provider Id" >
+                        @Html.DisplayFor(modelItem => item.FoodProviderId)
+                    </td>
+                    <td data-title="Amount Id" >
+                        @Html.DisplayFor(modelItem => item.FoodAmountId)
+                    </td>
+                    <td data-title="Urgent" >
+                        @Html.DisplayFor(modelItem => item.Urgent)
+                    </td>
+                    <td data-title="Notes" >
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                    <td data-title="Date Created" >
+                        @Html.DisplayFor(modelItem => item.DateCreated)
+                    </td>
+                    <td data-title="Tasks" >
+                        @Html.ActionLink("Edit", "Edit", new { id = item.FoodId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.FoodId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.FoodId })
+                    </td>
+                </tr>
+            }
+
+</table>
 }
