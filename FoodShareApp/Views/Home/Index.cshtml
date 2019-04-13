@@ -19,18 +19,15 @@
                     <div class="view overlay">
                         @if (foodprovider.LogoUrl.IsEmpty())
                         {
-                            <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
-                            <a href="#!">
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
+                            <img class="card-img-top" src="~/Content/Images/foodbank-placeholder.jpg" alt="Placeholder Image">
                         }
                         else
                         {
                             <img class="card-img-top" src="@foodprovider.LogoUrl" alt="@foodprovider.Name">
-                            <a href="#!">
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
                         }
+                        <a href="../FoodProviders/Details/@foodprovider.FoodProviderId">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
                     </div>
                     <!-- Card content -->
                     <div class="card-body d-flex flex-column ">
@@ -41,7 +38,7 @@
                         <p class="card-text mb-auto">@foodprovider.Services</p>
                         <!-- Button -->
                         <div class="card-footer bg-white mt-3 px-0 pb-0">
-                            <a href="#" class="btn btn-secondary">Map It!</a>
+                            <a href="../FoodProviders/Details/@foodprovider.FoodProviderId" class="btn btn-secondary">Map It!</a>
                         </div>
                     </div>
                 </div>
@@ -52,13 +49,12 @@
     </div>
 </section>
 <section id="btnJoin">
-    <a href="/account/Register" id="joinUs" class="btn btn-primary">
+    <a href="/account/Register" id="joinUs" class="btn btn-primary btn-lg">
         <span>Join Us</span>
     </a>
 <!--added login cta
     <a href="/account/Login" id="logIn" class="btn btn-outline-primary btn-lg ml-5">
         <span>Log in</span>
-
     </a>-->
 
 </section>

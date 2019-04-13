@@ -20,6 +20,7 @@ namespace FoodShareApp
         [StringLength(300)]
         public string Name { get; set; }
 
+        [Display(Name = "Image")]
         [StringLength(1024)]
         public string LogoUrl { get; set; }
 
@@ -43,6 +44,7 @@ namespace FoodShareApp
         public string PostalCode { get; set; }
 
         [Required]
+        [Display(Name = "Phone #")]
         [StringLength(10)]
         public string PhoneNumber { get; set; }
 
@@ -51,6 +53,7 @@ namespace FoodShareApp
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Type")]
         public int FoodProviderTypeId { get; set; }
 
         public string Services { get; set; }

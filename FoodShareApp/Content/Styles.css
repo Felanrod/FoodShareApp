@@ -108,9 +108,15 @@ h3 {
     margin: 30px
 }
 
-/* Actual Button */
-#joinUs{
-    transform: scale(1.2)
+/* Login button */
+.btn-outline-primary {
+    border: 2px solid var(--primary-blue) !important;
+    color: var(--primary-blue) !important;
+}
+
+.btn-outline-primary:hover {
+    border: 2px solid var(--secondary-blue) !important;
+    color: var(--secondary-blue) !important;
 }
 
 

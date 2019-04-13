@@ -3,208 +3,225 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<section id="dashboardTabs">
-    <h1>Administrators Dashboard</h1>
-    <ul class="list-unstyled list-inline " >
-        <li class="list-inline-item">
-            <a href="#dashFoodProviders">Food Sharers</a>
-        </li>
-        <li class="list-inline-item" >
-            <a href="#dashFoods">My Food</a>
-        </li>
-        <li class="list-inline-item" >
-            <a href="#dashEvents">Events</a>
-        </li>
-        <li class="list-inline-item" >
-            @Html.ActionLink("Notifications", "Notifications")
-        </li>
-    </ul>
-</section>
-<section id="dashFoodProviders">
-    <h2>Verified Food Providers</h2>
-    <table class="table shadow p-3 mb-5 bg-white rounded">
-        <caption>Verified Food Providers</caption>
-        <thead>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Logo
-                </th>
-                <th>
-                    Address
-                </th>
-                <th>
-                    PhoneNumber
-                </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Provider Type
-                </th>
-                <th>
-                    Website
-                </th>
-                <th>
-                    Verified
-                </th>
-                <th>
-                    Admin
-                </th>
-            </tr>
-        </thead>
-        @foreach (var foodProvider in Model.foodProvider)
-        {
-            if (foodProvider.Verified)
-            {
-                <tr>
-                    <td data-title="Name">
-                        @foodProvider.Name
-                    </td>
-                    <td data-title="Image">
-                        <img src="@foodProvider.LogoUrl" width="100" alt="" />
-                    </td>
-                    <td data-title="Address" >
-                        @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
-                    </td>
-                    <td data-title="Phone" >
-                        @foodProvider.PhoneNumber
-                    </td>
-                    <td data-title="Email" >
-                        @foodProvider.Email
-                    </td>
-                    <td data-title="Type">
-                        @foodProvider.ProviderType.ProviderType1
-                    </td>
-                    <td data-title="Website"  >
-                        <a href="@foodProvider.Website">@foodProvider.Website</a>
-                    </td>
-                    <td>
-                        @foodProvider.Verified
-                    </td>
-                    <td data-title="Admin" >
-                        @foodProvider.Admin
-                    </td>
-                    <td data-title="Task">
-                        @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
-                        @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
-                    </td>
-                </tr>
-            } // end if
-        }
-    </table>
-</section>
-<section id="dashFoods">
-    <h2>Foods</h2>
-    <table class="table shadow p-3 mb-5 bg-white rounded">
-        <caption>Foods</caption>
-        <thead>
-            <tr>
-                <th>
-                    Food Type
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Food Provider Id
-                </th>
-                <th>
-                    FoodAmountId
-                </th>
-                <th>
-                    Urgent
-                </th>
-                <th>
-                    Notes
-                </th>
-                <th>
-                    DateCreated
-                </th>
-            </tr>
-            </thead>
-            @foreach (var food in Model.food)
-            {
-                <tr>
-                    <td data-title="Type">
-                        @food.FoodType.FoodType1
-                    </td>
-                    <td data-title="Food Name">
-                        @food.FoodName
-                    </td>
-                    <td data-title="Provider Id">
-                        @food.FoodProviderId
-                    </td>
-                    <td data-title="Amount Id" >
-                        @food.FoodAmountId
-                    </td>
-                    <td data-title="Urgent">
-                        @food.Urgent
-                    </td>
-                    <td data-title="Notes" >
-                        @food.Notes
-                    </td>
-                    <td data-title="Date Created" >
-                        @food.DateCreated
-                    </td>
-                </tr>
-            }
-</table>
-</section>
-<section id="dashEvents">
-    <h2>Events</h2>
-    <table class="table shadow p-3 mb-5 bg-white rounded">
-      <caption>Events</caption>
-      <thead>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Date
-            </th>
-            <th>
-                Time
-            </th>
-            <th>
-                Location
-            </th>
-            <th>
-                Contact
-            </th>
-            <th>
-                Notes
-            </th>
-        </tr>
-      </thead>
-        @if (Model.events != null)
-        {
-        foreach (var _event in Model.events)
-        {
-            <tr>
-                <td data-title="Name">
-                    @_event.EventName
-                </td>
-                <td data-title="Date">
-                    @_event.EventDate
-                </td>
-                <td data-title="Time">
-                    @_event.EventTime
-                </td>
-                <td data-title="Location">
-                    @_event.Location
-                </td>
-                <td data-title="Contact">
-                    @_event.Phone | @_event.Email
-                </td>
-                <td data-title="Notes">
-                    @_event.Notes
-                </td>
-            </tr>
-        }
-        }
-    </table>
-</section>
+<h1 class="text-center">Administrators Dashboard</h1>
+<div class="row mt-5 w-100">
+    <nav id="dashboardTabs" class="col-2">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="#dashFoodProviders">Food Sharers</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#dashFoods">My Food</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#dashEvents">Events</a>
+            </li>
+            <li class="list-group-item">
+                @Html.ActionLink("Notifications", "Notifications")
+            </li>
+        </ul>
+    </nav>
+    <div class="col-9 mx-auto">
+        <section id="dashFoodProviders">
+            <div class="card card-custom mb-5">
+                <div class="card-body">
+                    <h2 class="card-title">Verified Food Providers</h2>
+                    <table class="table p-3 mb-5 bg-white rounded" cellspacing="0" width="100">
+                        <caption>Verified Food Providers</caption>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Logo
+                                </th>
+                                <th>
+                                    Address
+                                </th>
+                                <th>
+                                    Phone #
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th>
+                                    Website
+                                </th>
+                                <th>
+                                    Verified
+                                </th>
+                                <th>
+                                    Admin
+                                </th>
+                                <th>
+                                    Task
+                                </th>
+                            </tr>
+                        </thead>
+                        @foreach (var foodProvider in Model.foodProvider)
+                        {
+                            if (foodProvider.Verified)
+                            {
+                                <tr>
+                                    <td data-title="Name">
+                                        @foodProvider.Name
+                                    </td>
+                                    <td data-title="Image">
+                                        <img src="@foodProvider.LogoUrl" width="100" alt="" />
+                                    </td>
+                                    <td data-title="Address">
+                                        @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
+                                    </td>
+                                    <td data-title="Phone">
+                                        @foodProvider.PhoneNumber
+                                    </td>
+                                    <td data-title="Email">
+                                        @foodProvider.Email
+                                    </td>
+                                    <td data-title="Type">
+                                        @foodProvider.ProviderType.ProviderType1
+                                    </td>
+                                    <td data-title="Website">
+                                        <a href="@foodProvider.Website">@foodProvider.Website</a>
+                                    </td>
+                                    <td>
+                                        @foodProvider.Verified
+                                    </td>
+                                    <td data-title="Admin">
+                                        @foodProvider.Admin
+                                    </td>
+                                    <td data-title="Task">
+                                        <div class="d-inline-flex">
+                                            @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
+                                            @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
+                                        </div>
+                                    </td>
+                                </tr>
+                            } // end if
+                        }
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="dashFoods">
+            <div class="card card-custom mb-5">
+                <div class="card-body">
+                    <h2 class="card-title">Foods</h2>
+                    <table class="table p-3 mb-5 bg-white rounded">
+                        <caption>Foods</caption>
+                        <thead>
+                            <tr>
+                              <th>
+                                  Type
+                              </th>
+                              <th>
+                                  Name
+                              </th>
+                              <th>
+                                  Amount
+                              </th>
+                              <th>
+                                  Urgent
+                              </th>
+                              <th>
+                                  Notes
+                              </th>
+                              <th>
+                                Date Posted
+                              </th>
+                            </tr>
+                        </thead>
+                        @foreach (var food in Model.food)
+                        {
+                            <tr>
+                                <td data-title="Type">
+                                    @food.FoodType.FoodType1
+                                </td>
+                                <td data-title="Food Name">
+                                    @food.FoodName
+                                </td>
+                                <td data-title="Provider Id">
+                                    @food.FoodProviderId
+                                </td>
+                                <td data-title="Amount Id">
+                                    @food.FoodAmountId
+                                </td>
+                                <td data-title="Urgent">
+                                    @food.Urgent
+                                </td>
+                                <td data-title="Notes">
+                                    @food.Notes
+                                </td>
+                                <td data-title="Date Created">
+                                    @food.DateCreated
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="dashEvents">
+            <div class="card card-custom mb-5">
+                <div class="card-body">
+                    <h2 class="card-title">Events</h2>
+                    <table class="table p-3 mb-5 bg-white rounded">
+                        <caption>Events</caption>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                                <th>
+                                    Time
+                                </th>
+                                <th>
+                                    Location
+                                </th>
+                                <th>
+                                    Contact
+                                </th>
+                                <th>
+                                    Notes
+                                </th>
+                            </tr>
+                        </thead>
+                        @if (Model.events != null)
+                        {
+                            foreach (var _event in Model.events)
+                            {
+                                <tr>
+                                    <td data-title="Name">
+                                        @_event.EventName
+                                    </td>
+                                    <td data-title="Date">
+                                        @_event.EventDate
+                                    </td>
+                                    <td data-title="Time">
+                                        @_event.EventTime
+                                    </td>
+                                    <td data-title="Location">
+                                        @_event.Location
+                                    </td>
+                                    <td data-title="Contact">
+                                        @_event.Phone | @_event.Email
+                                    </td>
+                                    <td data-title="Notes">
+                                        @_event.Notes
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
