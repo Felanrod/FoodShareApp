@@ -19,18 +19,15 @@
                     <div class="view overlay">
                         @if (foodprovider.LogoUrl.IsEmpty())
                         {
-                            <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
-                            <a href="#!">
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
+                            <img class="card-img-top" src="~/Content/Images/foodbank-placeholder.jpg" alt="Placeholder Image">
                         }
                         else
                         {
                             <img class="card-img-top" src="@foodprovider.LogoUrl" alt="@foodprovider.Name">
-                            <a href="#!">
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
                         }
+                        <a href="../FoodProviders/Details/@foodprovider.FoodProviderId">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
                     </div>
                     <!-- Card content -->
                     <div class="card-body d-flex flex-column ">
