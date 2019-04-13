@@ -4,7 +4,7 @@
 }
 
 
-<h1 class="text-center">Sharing Food</h1>
+<h1 class="text-center">Welcome to The FoodShare Map</h1>
 <h2 class="text-center mb-4">Share Food? Need Food? Join Us!</h2>
 <section>
     <!--Grid row-->
@@ -52,21 +52,26 @@
     <a href="/account/Register" id="joinUs" class="btn btn-primary btn-lg">
         <span>Join Us</span>
     </a>
-@*added login cta*@
+<!--added login cta
     <a href="/account/Login" id="logIn" class="btn btn-outline-primary btn-lg ml-5">
         <span>Log in</span>
-    </a>
+    </a>-->
 
 </section>
+
 <section class="card-deck-wrapper">
     <div class="card-deck row">
         <div class="col-md-6">
             <h2 class="text-center">Locate Food</h2>
             <!-- Card -->
-            <div class="card card-custom mx-auto d-block shadow p-3 mb-5 bg-white rounded ">
+            <div class="card card-custom card-other mx-auto d-block shadow p-3 mb-5 bg-white rounded ">
                 <!-- Card image -->
                 <div class="view overlay">
                     <img class="card-img-top" src="~/Content/Images/mapbox-map-mockup.jpg" alt="Card image cap">
+                    <div class="card-img-overlay mt-5 mr-4 ">
+                        <i class="fas fa-map-marker fa-2x d-flex justify-content-center " aria-hidden="true"></i>
+
+                    </div>
                     <a href="/Map">
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -77,15 +82,35 @@
         <div class="col-md-6">
             <h2 class="text-center">Community Events</h2>
             <!-- Card -->
-            <div class="card card-custom mx-auto d-block shadow p-3 mb-5 bg-white rounded">
+
+            <div class="card card-custom card-other mx-auto d-block shadow p-3 mb-5 bg-white rounded">
+                <img class="card-img" src="~/Content/Images/community-garden.jpg" alt="Card image">
+                <div class="card-img-overlay mt-2 mr-4 custom-card-text ">
+                    <p class="card-title  mt-5">
+                        <strong>Community Garden</strong>
+                    </p>
+
+                    <p>When: May 26, 2019 </p>
+                    <p>Where: The Sharing Place,  Orillia</p>
+                    <p>Bring: Yourself, family and friends!</p>
+                    <p> Learn more: <a class="custom-card-text" href="Events">Community Events</a></p>
+                </div>
+            </div>
+
+
+
+
+            @* <div class="card card-other mx-auto d-block shadow p-3 mb-5 bg-white rounded">
                 <!-- Card image -->
                 <div class="view overlay">
-                    <img class="card-img-top" src="~/Content/Images/community-garden.jpg" alt="Card image cap">
-                    <a href="/Events">
-                        <div class="mask rgba-white-slight"></div>
-                    </a>
-                </div>
-            </div> <!-- Card -->
+                    <div class="card-img-overlay">
+                        <img class="card-img-top" src="~/Content/Images/community-garden.jpg" alt="Card image cap">
+                        <a href="/Events">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+
+                    </div>
+                </div> <!-- Card -->*@
         </div>
     </div>
 </section>
