@@ -161,13 +161,25 @@ li a {
     Bottom Border
     margin-bottom: 3px; */
 /* Main */
-body {
+/* adding a background image as below. Just leaving this in for now in case we prefer plain background
+    body {
     background-color: var(--background-gray);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     font-family: 'Open Sans', sans-serif
+}*/
+
+body {
+    background: url('Images/bg-map.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
 }
+
 
 main {
     width: 1280px;
@@ -188,6 +200,36 @@ main {
     display: flex;
     justify-content: space-between
 }
+
+/*this styles added text over the community event image*/
+
+.custom-card-text {
+    color: white;
+    text-align: right;
+    text-transform: capitalize;
+    line-height: 85%;
+    font-size: 120%;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+    
+}
+
+
+a.custom-card-text {
+    color: #68C39F;
+    
+}
+
+a.custom-card-text:link {
+    font-size: 100%;
+}
+
+a.custom-card-text:hover {
+    transform: scale(1.3);
+    color: white;
+       
+}
+
+/*this adds text over the community event image*/
 
 .mdc-card__primary {
     padding: 16px;
@@ -333,10 +375,6 @@ th {
 footer {
     margin-top: auto
 }
-
-
-
-
 
 
 /* mj note the more info link on the registration page isn't needed on wider screens just mobile  so this hides it on bigger screens*/
