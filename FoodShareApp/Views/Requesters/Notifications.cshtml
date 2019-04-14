@@ -8,15 +8,15 @@
 
 <div class="row">
     <div class="col-md-6">
-        <ul>
+        <ul class="mt-2 d-flex align-items-end flex-column">
             @foreach (var item in @ViewBag.Providers)
             {
-                <li><a href="../../FoodProviders/Details/@item.FoodProviderId">@item.Name</a> cancelled a food request</li>
+                <li class="mb-3"><a href="../../FoodProviders/Details/@item.FoodProviderId">@item.Name</a> cancelled a food request</li>
             }
         </ul>
     </div>
     <div class="col-md-6">
-            <ul>
+            <ul class="list-unstyled">
                 @foreach (var notice in Model)
                 {
                     <li>
@@ -24,7 +24,7 @@
                         {
                             @Html.AntiForgeryToken()
                         <div>
-                            <button class="btn btn-primary" type="submit" name="id" value="@notice.NotificationId"> Remove notice </button>
+                            <button class="btn btn-primary btn-sm" type="submit" name="id" value="@notice.NotificationId"> Remove notice </button>
                         </div>
                         }
                     </li>

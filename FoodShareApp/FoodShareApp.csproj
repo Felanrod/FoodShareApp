@@ -335,7 +335,7 @@
     <Content Include="Views\Notifications\Details.cshtml" />
     <Content Include="Views\Notifications\Edit.cshtml" />
     <Content Include="Views\Notifications\Index.cshtml" />
-    <Content Include="Views\FoodProviders\Notification.cshtml" />
+    <Content Include="Views\FoodProviders\Notifications.cshtml" />
     <Content Include="Views\Requesters\Notifications.cshtml" />
     <Content Include="Views\Events\Create.cshtml" />
     <Content Include="Views\Events\Delete.cshtml" />
