@@ -213,6 +213,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\apples-on-tree.jpg" />
+    <Content Include="Content\Images\bg-map.png" />
     <Content Include="Content\Images\community-garden.jpg" />
     <Content Include="Content\Images\event-large.svg" />
     <Content Include="Content\Images\family-large.svg" />
