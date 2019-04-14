@@ -84,7 +84,26 @@ namespace FoodShareApp.Views
             return View(ProviderNotifications);
         }
 
+        // POST notification
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Notification([Bind(Include = "ToId,FromId")] Notification CancelRequest, int id)
+        {
+            Notification notification = db.Notifications.Find(id);
+            db.Notifications.Remove(notification);
+            db.SaveChanges();
 
+            CancelRequest.DateCreated = DateTime.Now;
+            CancelRequest.TypeId = 3;
+            if (ModelState.IsValid)
+            {
+                db.Notifications.Add(CancelRequest);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
         // GET: FoodProviders/Create
         [Authorize(Roles = "SuperAdmin, Admin, Sharer")]
         public ActionResult Create()
