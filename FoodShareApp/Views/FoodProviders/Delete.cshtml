@@ -9,129 +9,134 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>FoodProvider</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="card card-custom">
+        <div class="card-body">
+            <h4>Food Provider</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LogoUrl)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LogoUrl)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LogoUrl)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.LogoUrl)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Street)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Street)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Street)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Street)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.City)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.City)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Province)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Province)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Province)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Province)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Country)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Country)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Country)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PostalCode)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PostalCode)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PostalCode)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.PostalCode)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProviderType.ProviderType1)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProviderType.ProviderType1)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProviderType.ProviderType1)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ProviderType.ProviderType1)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Services)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Services)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Services)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Services)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Website)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Website)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Website)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Website)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Verified)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Verified)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Verified)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Verified)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Admin)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Admin)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Admin)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Admin)
+                </dd>
 
-    </dl>
+            </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
         </div>
-    }
+    </div>
 </div>
