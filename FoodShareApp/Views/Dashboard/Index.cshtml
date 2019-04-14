@@ -8,7 +8,10 @@
     <nav id="dashboardTabs" class="col-12">
         <ul class="list-group list-group-horizontal">
             <li class="list-group-item">
-                <a data-toggle="tab" data-target="#dashFoodProviders" class="active show" href="#dashFoodProviders">Food Sharers</a>
+                <a data-toggle="tab" class="active show" href="#dashVerifiedSharers">Verified Sharers</a>
+            </li>
+            <li class="list-group-item">
+                <a data-toggle="tab" href="#dashUnverifiedSharers">Unverified Sharers</a>
             </li>
             <li class="list-group-item">
                 <a data-toggle="tab" href="#dashFoods">My Food</a>
@@ -22,12 +25,12 @@
         </ul>
     </nav>
     <div class="col-12 mx-auto tab-content">
-        <section id="dashFoodProviders" class="tab-pane fade active show">
+        <section id="dashVerifiedSharers" class="tab-pane fade active show">
             <div class="card card-custom mb-5">
                 <div class="card-body">
-                    <h2 class="card-title">Verified Food Providers</h2>
+                    <h2 class="card-title">Verified Sharers</h2>
                     <table class="table p-3 mb-5 bg-white rounded" cellspacing="0" width="100">
-                        <caption>Verified Food Providers</caption>
+                        <caption>Verified Sharers</caption>
                         <thead>
                             <tr>
                                 <th>
@@ -101,6 +104,79 @@
                 </div>
             </div>
         </section>
+        <section id="dashUnverifiedSharers" class="tab-pane fade">
+            <div class="card card-custom mb-5">
+                <div class="card-body">
+                    <h2 class="card-title">Unverified Sharers</h2>
+                    <table class="table p-3 mb-5 bg-white rounded" cellspacing="0" width="100">
+                        <caption>Unverified Sharers</caption>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Logo
+                                </th>
+                                <th>
+                                    Address
+                                </th>
+                                <th>
+                                    Phone #
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th>
+                                    Website
+                                </th>
+                                <th>
+                                    Task
+                                </th>
+                            </tr>
+                        </thead>
+                        @foreach (var foodProvider in Model.foodProvider)
+                        {
+                            if (!foodProvider.Verified)
+                            {
+                                <tr>
+                                    <td data-title="Name">
+                                        @foodProvider.Name
+                                    </td>
+                                    <td data-title="Image">
+                                        <img src="@foodProvider.LogoUrl" width="100" alt="" />
+                                    </td>
+                                    <td data-title="Address">
+                                        @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
+                                    </td>
+                                    <td data-title="Phone">
+                                        @foodProvider.PhoneNumber
+                                    </td>
+                                    <td data-title="Email">
+                                        @foodProvider.Email
+                                    </td>
+                                    <td data-title="Type">
+                                        @foodProvider.ProviderType.ProviderType1
+                                    </td>
+                                    <td data-title="Website">
+                                        <a href="@foodProvider.Website">@foodProvider.Website</a>
+                                    </td>
+                                    <td data-title="Task">
+                                        <div class="d-inline-flex">
+                                            @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
+                                            @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
+                                        </div>
+                                    </td>
+                                </tr>
+                            } // end if
+                        }
+                    </table>
+                </div>
+            </div>
+        </section>
         <section id="dashFoods" class="tab-pane fade">
             <div class="card card-custom mb-5">
                 <div class="card-body">
@@ -109,24 +185,24 @@
                         <caption>Foods</caption>
                         <thead>
                             <tr>
-                              <th>
-                                  Type
-                              </th>
-                              <th>
-                                  Name
-                              </th>
-                              <th>
-                                  Amount
-                              </th>
-                              <th>
-                                  Urgent
-                              </th>
-                              <th>
-                                  Notes
-                              </th>
-                              <th>
-                                Date Posted
-                              </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Amount
+                                </th>
+                                <th>
+                                    Urgent
+                                </th>
+                                <th>
+                                    Notes
+                                </th>
+                                <th>
+                                    Date Posted
+                                </th>
                             </tr>
                         </thead>
                         @foreach (var food in Model.food)
