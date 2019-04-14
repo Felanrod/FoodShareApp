@@ -1,26 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using FoodShareApp;
+using FoodShareApp.Models;
+using Microsoft.AspNet.Identity;
 
 namespace FoodShareApp.Controllers
 {
     public class EventsController : Controller
     {
-        private DbFoodShare db = new DbFoodShare();
+        private ApplicationDbContext db = new ApplicationDbContext();
+        
         // GET: Events
         public ActionResult Index()
         {
-            //var events = db.Events.Include(e => e.FoodType).Where(f => f.FoodProviderId == userId);
-            //foods = foods.Where(f => f.FoodProviderId.Equals(User.Identity.GetUserId()));
             return View(db.Events.ToList());
         }
 
         // GET: Events/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Event @event = db.Events.Find(id);
+            if (@event == null)
+            {
+                return HttpNotFound();
+            }
+            return View(@event);
         }
 
         // GET: Events/Create
@@ -30,63 +44,88 @@ namespace FoodShareApp.Controllers
         }
 
         // POST: Events/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "EventId,EventName,EventDate,EventTime,Location,Phone,Email,Notes")] Event @event)
         {
-            try
+            var userId = User.Identity.GetUserId();
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                @event.FoodProviderAdminId = userId;
+                db.Events.Add(@event);
+                db.SaveChanges();
+                return Redirect("/Dashboard/Index/#dashEvents");
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(@event);
         }
 
         // GET: Events/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Event @event = db.Events.Find(id);
+            if (@event == null)
+            {
+                return HttpNotFound();
+            }
+            return View(@event);
         }
 
         // POST: Events/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "EventId,FoodProviderAdminId,EventName,EventDate,EventTime,Location,Phone,Email,Notes")] Event @event)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                db.Entry(@event).State = EntityState.Modified;
+                db.SaveChanges();
+                return Redirect("/Dashboard/Index/#dashEvents");
             }
-            catch
-            {
-                return View();
-            }
+            return View(@event);
         }
 
         // GET: Events/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Event @event = db.Events.Find(id);
+            if (@event == null)
+            {
+                return HttpNotFound();
+            }
+            return View(@event);
         }
 
         // POST: Events/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            Event @event = db.Events.Find(id);
+            db.Events.Remove(@event);
+            db.SaveChanges();
+            return Redirect("/Dashboard/Index/#dashEvents");
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                return View();
+                db.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }

@@ -239,6 +239,9 @@
             <div class="card card-custom mb-5">
                 <div class="card-body">
                     <h2 class="card-title">Events</h2>
+                    <p>
+                        @Html.ActionLink("Create Event", "CreateEvent")
+                    </p>
                     <table class="table p-3 mb-5 bg-white rounded">
                         <caption>Events</caption>
                         <thead>
@@ -260,6 +263,9 @@
                                 </th>
                                 <th>
                                     Notes
+                                </th>
+                                <th>
+                                    Tasks
                                 </th>
                             </tr>
                         </thead>
@@ -285,6 +291,18 @@
                                     </td>
                                     <td data-title="Notes">
                                         @_event.Notes
+                                    </td>
+                                    <td data-title="Tasks">
+                                        @ViewBag.userId
+                                        @_event.FoodProviderAdminId
+                                        @if ((string)ViewBag.userId == _event.FoodProviderAdminId) {
+                                            Html.ActionLink("Edit", "EditEvent", new { id = _event.EventId });
+                                        } else
+                                        {
+                                        <p>@_event.EventName;</p>
+                                        }
+                                        @*@Html.ActionLink("Details", "Details", new { id = item.EventId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.EventId })*@
                                     </td>
                                 </tr>
                             }
