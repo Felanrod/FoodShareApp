@@ -33,6 +33,9 @@ namespace FoodShareApp.Views
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             FoodProvider foodProvider = db.FoodProviders.Find(id);
+
+            var food = db.Foods.Where(m => m.FoodProviderId == id);
+            ViewBag.Food = food;
             if (foodProvider == null)
             {
                 return HttpNotFound();
