@@ -7,15 +7,15 @@
 <h2>Notification</h2>
 <div class="row">
     <div class="col-md-6">
-        <ul>
+        <ul class="mt-2 d-flex align-items-end flex-column">
             @foreach (var item in @ViewBag.Requesters)
             {
-                <li><a href="../../Requesters/Details/@item.RequesterId">@item.Name</a> sent you a food request</li>
+                <li class="mb-3"><a href="../../Requesters/Details/@item.RequesterId">@item.Name</a> sent you a food request on:</li>
             }
         </ul>
     </div>
     <div class="col-md-6">
-        <ul>
+        <ul class="list-unstyled">
             @foreach (var notice in Model)
             {
             <li>
@@ -27,7 +27,7 @@
                     <input type="hidden" name="ToId" value="@notice.FromId" />
                 </div>
                 @notice.DateCreated
-                <button class="btn btn-primary" type="submit" name="id" value="@notice.NotificationId"> Cancel Request </button>
+                <button class="btn btn-primary btn-sm" type="submit" name="id" value="@notice.NotificationId"> Cancel Request </button>
                 }
             </li>
             }

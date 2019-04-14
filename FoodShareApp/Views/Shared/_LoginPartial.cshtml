@@ -1,6 +1,18 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
+    if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Sharer"))
+    {
+        <li>
+            <a href="/FoodProviders/Notifications"><i class="fas fa-bell" aria-hidden="true"></i></a>
+        </li>
+    }
+    else
+    {
+        <li>
+            <a href="/Requesters/Notifications"><i class="fas fa-bell" aria-hidden="true"></i></a>
+        </li>
+    }
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "logout d-flex py-auto" }))
     {
         @Html.AntiForgeryToken()
@@ -9,7 +21,7 @@
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "lowercase nav-link" })
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()" aria-selected="false" tabindex="-1"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Log Out <i class="fas fa-bell" aria-hidden="true"></i> </a>
+                <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()" aria-selected="false" tabindex="-1"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Log Out </a>
             </li>
         </ul>
     }
@@ -20,6 +32,6 @@ else
         <a href="/account/Register" class="nav-link"><i class="fas fa-user-plus" aria-hidden="true"></i>Join Us!</a>
     </li>
     <li class="@(ViewBag.Title=="Log in" ? "currentPage" : "") nav-item">
-        <a href="/account/Login" class="nav-link"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Log In <i class="fas fa-bell" aria-hidden="true"></i></a>
+        <a href="/account/Login" class="nav-link"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Log In</a>
     </li>
 }

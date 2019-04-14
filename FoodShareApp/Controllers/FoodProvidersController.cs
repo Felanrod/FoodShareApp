@@ -61,7 +61,7 @@ namespace FoodShareApp.Views
 
         // GET: FoodProviders/Notifications
         [Authorize(Roles = "SuperAdmin, Admin, Sharer")]
-        public ActionResult Notification()
+        public ActionResult Notifications()
         {
             var ProviderId = User.Identity.GetUserId();
             List<Notification> ProviderNotifications = db.Notifications.Where(f => f.ToId == ProviderId).ToList();
@@ -87,7 +87,7 @@ namespace FoodShareApp.Views
         // POST notification
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Notification([Bind(Include = "ToId,FromId")] Notification CancelRequest, int id)
+        public ActionResult Notifications([Bind(Include = "ToId,FromId")] Notification CancelRequest, int id)
         {
             Notification notification = db.Notifications.Find(id);
             db.Notifications.Remove(notification);
@@ -99,7 +99,7 @@ namespace FoodShareApp.Views
             {
                 db.Notifications.Add(CancelRequest);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("/Notifications");
             }
 
             return View();
