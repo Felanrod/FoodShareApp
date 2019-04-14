@@ -131,30 +131,43 @@ namespace FoodShareApp.Controllers
             }
             base.Dispose(disposing);
         }
-        // GET: Requesters/Register
-        //[Authorize(Roles = "Requester")]
-        //public ActionResult Register()
-        //{
-        //    return View();
-        //}
 
-        //// POST: Requesters/Register
-        //[Authorize(Roles = "Requester")]
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Register(FormCollection values)
-        //{
-        //    var requester = new Requester();
-        //    TryUpdateModel(requester);
 
-        //    string id = User.Identity.GetUserId();
-        //    //requester.RequesterId = id;
+        // get notifications
+        [Authorize(Roles = "Requester")]
+        public ActionResult Notifications()
+        {
+            var RequesterId = User.Identity.GetUserId();
 
-        //    db.Requesters.Add(requester);
-        //    db.SaveChanges();
 
-        //    return RedirectToAction("Index", "Requesters");
-        //}
+            List<Notification> RequesterNotifications = db.Notifications.Where(m => m.ToId == RequesterId).ToList();
+
+            var Providers = new List<FoodProvider>();
+
+            foreach(var item in RequesterNotifications)
+            {
+                var providerId = item.FromId;
+                FoodProvider Provider = db.FoodProviders.FirstOrDefault(m => m.FoodProviderId == providerId);
+                Providers.Add(Provider);
+            }
+            ViewBag.Providers = Providers;
+
+            return View(RequesterNotifications);
+        }
+
+        // post notifications 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Notifications(int id)
+        {
+            Notification notification = db.Notifications.Find(id);
+            db.Notifications.Remove(notification);
+            db.SaveChanges();
+
+            return View();
+        }
+
+
 
     }
 }
