@@ -33,6 +33,9 @@ namespace FoodShareApp.Views
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             FoodProvider foodProvider = db.FoodProviders.Find(id);
+
+            var food = db.Foods.Where(m => m.FoodProviderId == id);
+            ViewBag.Food = food;
             if (foodProvider == null)
             {
                 return HttpNotFound();
@@ -61,7 +64,7 @@ namespace FoodShareApp.Views
 
         // GET: FoodProviders/Notifications
         [Authorize(Roles = "SuperAdmin, Admin, Sharer")]
-        public ActionResult Notification()
+        public ActionResult Notifications()
         {
             var ProviderId = User.Identity.GetUserId();
             List<Notification> ProviderNotifications = db.Notifications.Where(f => f.ToId == ProviderId).ToList();
@@ -84,7 +87,26 @@ namespace FoodShareApp.Views
             return View(ProviderNotifications);
         }
 
+        // POST notification
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Notifications([Bind(Include = "ToId,FromId")] Notification CancelRequest, int id)
+        {
+            Notification notification = db.Notifications.Find(id);
+            db.Notifications.Remove(notification);
+            db.SaveChanges();
 
+            CancelRequest.DateCreated = DateTime.Now;
+            CancelRequest.TypeId = 3;
+            if (ModelState.IsValid)
+            {
+                db.Notifications.Add(CancelRequest);
+                db.SaveChanges();
+                return RedirectToAction("/Notifications");
+            }
+
+            return View();
+        }
         // GET: FoodProviders/Create
         [Authorize(Roles = "SuperAdmin, Admin, Sharer")]
         public ActionResult Create()

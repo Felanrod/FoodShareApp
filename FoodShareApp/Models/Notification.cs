@@ -10,10 +10,13 @@ namespace FoodShareApp
     {
         public int NotificationId { get; set; }
 
+        [Display(Name = "Type")]
         public int TypeId { get; set; }
 
+        [Display(Name = "To")]
         public string ToId { get; set; }
 
+        [Display(Name = "From")]
         public string FromId { get; set; }
 
         [StringLength(500)]
@@ -21,6 +24,7 @@ namespace FoodShareApp
 
         public bool Viewed { get; set; }
 
+        [Display(Name = "Date")]
         public DateTime? DateCreated { get; set; }
 
         public virtual NotificationType NotificationType { get; set; }
