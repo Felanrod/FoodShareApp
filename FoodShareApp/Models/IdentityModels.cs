@@ -29,5 +29,7 @@ namespace FoodShareApp.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<FoodShareApp.Event> Events { get; set; }
     }
 }
