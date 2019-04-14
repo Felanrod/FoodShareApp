@@ -5,19 +5,42 @@
 }
 
 <h2>Notification</h2>
-<ul>
-    @foreach (var item in @ViewBag.Requesters)
-    {
-        <li><a href="../../Requesters/Details/@item.RequesterId">@item.Name</a> sent you a food request</li>
-    }
-</ul>
+<div class="row">
+    <div class="col-md-6">
+        <ul>
+            @foreach (var item in @ViewBag.Requesters)
+            {
+                <li><a href="../../Requesters/Details/@item.RequesterId">@item.Name</a> sent you a food request</li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <ul>
+            @foreach (var notice in Model)
+            {
+            <li>
+                @using (Html.BeginForm())
+                {
+                @Html.AntiForgeryToken()
+                <div>
+                    <input type="hidden" name="FromId" value="@notice.ToId" />
+                    <input type="hidden" name="ToId" value="@notice.FromId" />
+                </div>
+                @notice.DateCreated
+                <button class="btn btn-primary" type="submit" name="id" value="@notice.NotificationId"> Cancel Request </button>
+                }
+            </li>
+            }
+        </ul>
+    </div>
+</div>
 @*<h2>Requester Ids</h2>
-@foreach (var item in Model)
-{
-<li>
-    @Html.DisplayFor(modelItem => item.FromId)
-</li>
-}*@
+    @foreach (var item in Model)
+    {
+    <li>
+        @Html.DisplayFor(modelItem => item.FromId)
+    </li>
+    }*@
 @*<table class="table">
         <tr>
             <th>
@@ -58,3 +81,4 @@
     }
 
     </table>*@
+
