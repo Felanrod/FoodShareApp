@@ -5,24 +5,24 @@
 }
 <h1 class="text-center">Administrators Dashboard</h1>
 <div class="row mt-5 w-100">
-    <nav id="dashboardTabs" class="col-2">
-        <ul class="list-group">
+    <nav id="dashboardTabs" class="col-12">
+        <ul class="list-group list-group-horizontal">
             <li class="list-group-item">
-                <a href="#dashFoodProviders">Food Sharers</a>
+                <a data-toggle="tab" data-target="#dashFoodProviders" class="active show" href="#dashFoodProviders">Food Sharers</a>
             </li>
             <li class="list-group-item">
-                <a href="#dashFoods">My Food</a>
+                <a data-toggle="tab" href="#dashFoods">My Food</a>
             </li>
             <li class="list-group-item">
-                <a href="#dashEvents">Events</a>
+                <a data-toggle="tab" href="#dashEvents">Events</a>
             </li>
             <li class="list-group-item">
                 @Html.ActionLink("Notifications", "Notifications")
             </li>
         </ul>
     </nav>
-    <div class="col-9 mx-auto">
-        <section id="dashFoodProviders">
+    <div class="col-12 mx-auto tab-content">
+        <section id="dashFoodProviders" class="tab-pane fade active show">
             <div class="card card-custom mb-5">
                 <div class="card-body">
                     <h2 class="card-title">Verified Food Providers</h2>
@@ -50,9 +50,6 @@
                                 </th>
                                 <th>
                                     Website
-                                </th>
-                                <th>
-                                    Verified
                                 </th>
                                 <th>
                                     Admin
@@ -88,11 +85,8 @@
                                     <td data-title="Website">
                                         <a href="@foodProvider.Website">@foodProvider.Website</a>
                                     </td>
-                                    <td>
-                                        @foodProvider.Verified
-                                    </td>
                                     <td data-title="Admin">
-                                        @foodProvider.Admin
+                                        @(foodProvider.Admin ? "Yes" : "No")
                                     </td>
                                     <td data-title="Task">
                                         <div class="d-inline-flex">
@@ -107,7 +101,7 @@
                 </div>
             </div>
         </section>
-        <section id="dashFoods">
+        <section id="dashFoods" class="tab-pane fade">
             <div class="card card-custom mb-5">
                 <div class="card-body">
                     <h2 class="card-title">Foods</h2>
@@ -165,7 +159,7 @@
                 </div>
             </div>
         </section>
-        <section id="dashEvents">
+        <section id="dashEvents" class="tab-pane fade">
             <div class="card card-custom mb-5">
                 <div class="card-body">
                     <h2 class="card-title">Events</h2>
