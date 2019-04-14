@@ -124,7 +124,7 @@ namespace FoodShareApp.Controllers
         }
 
         protected override void Dispose(bool disposing)
-        {
+         {
             if (disposing)
             {
                 db.Dispose();
@@ -164,7 +164,7 @@ namespace FoodShareApp.Controllers
             db.Notifications.Remove(notification);
             db.SaveChanges();
 
-            return View();
+            return RedirectToAction("Notifications");
         }
 
 
