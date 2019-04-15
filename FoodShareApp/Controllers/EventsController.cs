@@ -12,16 +12,19 @@ using Microsoft.AspNet.Identity;
 
 namespace FoodShareApp.Controllers
 {
+    [Authorize(Roles = "SuperAdmin, Admin")]
     public class EventsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         
+        [AllowAnonymous]
         // GET: Events
         public ActionResult Index()
         {
             return View(db.Events.ToList());
         }
 
+        [AllowAnonymous]
         // GET: Events/Details/5
         public ActionResult Details(int? id)
         {
