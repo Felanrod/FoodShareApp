@@ -130,6 +130,10 @@ namespace FoodShareApp.Views
         public ActionResult Create([Bind(Include = "Name,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,FoodProviderTypeId,Services,Website,Verified,Admin")] FoodProvider foodProvider)
         {
             var userId = User.Identity.GetUserId();
+            if (foodProvider.LogoUrl == null || foodProvider.LogoUrl == "")
+            {
+                foodProvider.LogoUrl = "https://foodsharemap.azurewebsites.net/Content/Images/foodbank-placeholder.jpg";
+            }
             if (ModelState.IsValid)
             {
                 foodProvider.FoodProviderId = userId;
@@ -166,6 +170,10 @@ namespace FoodShareApp.Views
         public ActionResult Edit([Bind(Include = "Name,FoodProviderId,LogoUrl,Street,City,Province,Country,PostalCode,PhoneNumber,Email,FoodProviderTypeId,Services,Website,Verified,Admin")] FoodProvider foodProvider)
         {
             var editId = foodProvider.FoodProviderId;
+            if (foodProvider.LogoUrl == null || foodProvider.LogoUrl == "")
+            {
+                foodProvider.LogoUrl = "https://foodsharemap.azurewebsites.net/Content/Images/foodbank-placeholder.jpg";
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(foodProvider).State = EntityState.Modified;
