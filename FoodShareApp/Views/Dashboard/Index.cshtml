@@ -94,7 +94,19 @@
                                     <a href="@foodProvider.Website">@foodProvider.Website</a>
                                 </td>
                                 <td data-title="Admin">
-                                    @(foodProvider.Admin ? "Yes" : "No")
+                                 @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        if(foodProvider.Admin)
+                                        {
+                                            <span>Yes</span>
+                                        }
+                                        else
+                                        {
+                                            <button name="UserId" type='submit' value="@foodProvider.FoodProviderId">Make Admin</button>
+                                        }
+                                    }
                                 </td>
                                 <td data-title="Task">
                                     <div class="d-inline-flex">
