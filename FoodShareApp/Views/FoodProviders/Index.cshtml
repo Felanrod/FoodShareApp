@@ -64,7 +64,14 @@
                         @Html.ActionLink(item.Name, "Details", new { id = item.FoodProviderId })
                     </td>
                     <td data-title="Image">
-                        <img src="@item.LogoUrl" width="100" alt="" />
+                        @if (item.LogoUrl.IsEmpty())
+                        {
+                            <img width="100" src="~/Content/Images/foodbank-placeholder.jpg" alt="Placeholder Image">
+                        }
+                        else
+                        {
+                            <img width="100" src="@item.LogoUrl" alt="@item.Name">
+                        }
                     </td>
                     @*<td>
                             @Html.DisplayFor(modelItem => item.Street)

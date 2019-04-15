@@ -19,7 +19,14 @@ namespace FoodShareApp.Views
         public ActionResult Index()
         {
             var foodProviders = db.FoodProviders.Include(f => f.ProviderType);
-            return View(foodProviders.ToList());
+            if (Request.IsAuthenticated)
+            {
+                return View(foodProviders.ToList());
+            }
+            else
+            {
+                return View(foodProviders.Where(f => f.ProviderType.ProviderType1 == "Food Bank"));
+            }
         }
 
         // GET: FoodProviders/Details/5
