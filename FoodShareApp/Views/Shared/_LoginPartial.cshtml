@@ -1,18 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Sharer"))
-    {
-        <li>
-            <a href="/FoodProviders/Notifications"><i class="fas fa-bell" aria-hidden="true"></i></a>
-        </li>
-    }
-    else
-    {
-        <li>
-            <a href="/Requesters/Notifications"><i class="fas fa-bell" aria-hidden="true"></i></a>
-        </li>
-    }
+
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "logout d-flex py-auto" }))
     {
         @Html.AntiForgeryToken()
@@ -23,6 +12,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()" aria-selected="false" tabindex="-1"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Log Out </a>
             </li>
+            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Sharer"))
+            {
+                <li>
+                    <a href="/FoodProviders/Notifications" class="ml-3"><i class="fas fa-bell" aria-hidden="true"></i></a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="/Requesters/Notifications" class="ml-3"><i class="fas fa-bell" aria-hidden="true"></i></a>
+                </li>
+            }
         </ul>
     }
 }

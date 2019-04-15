@@ -1,14 +1,31 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Montserrat:200|Open+Sans');
 
-/* Styles   Jayden Hluszko    Jayden Hluszko Portfolio    Stylesheet for portfolio site */
-
 /* ================================       Colour Variables       ======================================== */
 :root {
     --primary-blue: #053D5D; /* The theme primary color - Primary Blue */
     --secondary-blue: #479CB7; /* The theme secondary color - Secondary Blue */
     --background-gray: #ECEFF1; /* The theme background color - Background Gray */
     --green: #68C39F; /* Green */
+    --dark-green: #359271;
     font-size: 100%;
+}
+
+/* Dashboard Tabs */
+#myTab a:hover {
+    background-color: red
+}
+
+.bg-dashTabs {
+    background-color: var(--green) !important;
+}
+
+.dashTab-link {
+    color: #333;
+}
+
+.dashTab-link:hover, .dashTab-link:focus, li a.active {
+    background-color: var(--dark-green) !important;
+    color: black;
 }
 
 /*
@@ -24,9 +41,7 @@
         104,195,159
 
 */
-
 /* ================================       Typography       ======================================== */
-
 /* Headlines */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
