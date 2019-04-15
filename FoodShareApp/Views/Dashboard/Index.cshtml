@@ -66,38 +66,50 @@
                         {
                             if (foodProvider.Verified)
                             {
-                                <tr>
-                                    <td data-title="Name">
-                                        @foodProvider.Name
-                                    </td>
-                                    <td data-title="Image">
-                                        <img src="@foodProvider.LogoUrl" width="100" alt="" />
-                                    </td>
-                                    <td data-title="Address">
-                                        @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
-                                    </td>
-                                    <td data-title="Phone">
-                                        @foodProvider.PhoneNumber
-                                    </td>
-                                    <td data-title="Email">
-                                        @foodProvider.Email
-                                    </td>
-                                    <td data-title="Type">
-                                        @foodProvider.ProviderType.ProviderType1
-                                    </td>
-                                    <td data-title="Website">
-                                        <a href="@foodProvider.Website">@foodProvider.Website</a>
-                                    </td>
-                                    <td data-title="Admin">
-                                        @(foodProvider.Admin ? "Yes" : "No")
-                                    </td>
-                                    <td data-title="Task">
-                                        <div class="d-inline-flex">
-                                            @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
-                                            @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
-                                        </div>
-                                    </td>
-                                </tr>
+                        <tr>
+                            <td data-title="Name">
+                                @foodProvider.Name
+                            </td>
+                            <td data-title="Image">
+                                <img src="@foodProvider.LogoUrl" width="100" alt="" />
+                            </td>
+                            <td data-title="Address">
+                                @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
+                            </td>
+                            <td data-title="Phone">
+                                @foodProvider.PhoneNumber
+                            </td>
+                            <td data-title="Email">
+                                @foodProvider.Email
+                            </td>
+                            <td data-title="Type">
+                                @foodProvider.ProviderType.ProviderType1
+                            </td>
+                            <td data-title="Website">
+                                <a href="@foodProvider.Website">@foodProvider.Website</a>
+                            </td>
+                            <td data-title="Admin">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    if(foodProvider.Admin)
+                                    {
+                                        <span>Yes</span>
+                                    }
+                                    else
+                                    {
+                                        <button name="UserId" type='submit' value="@foodProvider.FoodProviderId">Make Admin</button>
+                                    }
+                                }
+                                </td>
+                            <td data-title="Task">
+                                <div class="d-inline-flex">
+                                    @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
+                                    @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
+                                </div>
+                            </td>
+                        </tr>
                             } // end if
                         }
                     </table>
@@ -296,8 +308,8 @@
                                         @ViewBag.userId
                                         @_event.FoodProviderAdminId
                                         @if ((string)ViewBag.userId == _event.FoodProviderAdminId) {
-                                            Html.ActionLink("Edit", "EditEvent", new { id = _event.EventId });
-                                        } else
+                                    Html.ActionLink("Edit", "EditEvent", new { id = _event.EventId });
+                                } else
                                         {
                                         <p>@_event.EventName;</p>
                                         }
