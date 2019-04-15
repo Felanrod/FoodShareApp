@@ -10,7 +10,13 @@
 @if (Request.IsAuthenticated)
 {
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @if (ViewBag.CurrentProvider.Verified)
+        {
+            Html.ActionLink("Create New", "Create");
+        } else
+        {
+            @:You need to be Verified before you can create a food source.
+        }
     </p>
     <table class="table shadow p-3 mb-5 bg-white rounded">
         <caption>Foods Table</caption>
@@ -37,7 +43,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.DateCreated)
                 </th>
-                <th></th>
+                <th>
+                    Tasks
+                </th>
             </tr>
             </thead>
 
@@ -57,7 +65,13 @@
                         @Html.DisplayFor(modelItem => item.FoodAmountId)
                     </td>
                     <td data-title="Urgent" >
-                        @Html.DisplayFor(modelItem => item.Urgent)
+                        @if (item.Urgent == true)
+                        {
+                            @:Yes
+                        } else
+                        {
+                            @:No
+                        }
                     </td>
                     <td data-title="Notes" >
                         @Html.DisplayFor(modelItem => item.Notes)
@@ -66,7 +80,7 @@
                         @Html.DisplayFor(modelItem => item.DateCreated)
                     </td>
                     <td data-title="Tasks" >
-                        @Html.ActionLink("Edit", "Edit", new { id = item.FoodId }) |
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.FoodId })*@
                         @Html.ActionLink("Details", "Details", new { id = item.FoodId }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.FoodId })
                     </td>

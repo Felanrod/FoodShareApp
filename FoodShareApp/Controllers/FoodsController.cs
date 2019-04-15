@@ -20,6 +20,8 @@ namespace FoodShareApp.Views
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
+            var currentProvider = db.FoodProviders.Find(userId);
+            ViewBag.CurrentProvider = currentProvider;
             var foods = db.Foods.Include(f => f.FoodType).Where(f => f.FoodProviderId == userId);
             //foods = foods.Where(f => f.FoodProviderId.Equals(User.Identity.GetUserId()));
             return View(foods.ToList());
@@ -70,7 +72,14 @@ namespace FoodShareApp.Views
                 food.DateCreated = DateTime.Now;
                 db.Foods.Add(food);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                {
+                    return Redirect("/Dashboard/Index/#dashEvents");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.FoodProviderId = userId;
@@ -134,7 +143,14 @@ namespace FoodShareApp.Views
             Food food = db.Foods.Find(id);
             db.Foods.Remove(food);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+            {
+                return Redirect("/Dashboard/Index/#dashFoods");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -214,6 +214,9 @@
         <div class="card card-custom mb-5">
             <div class="card-body">
                 <h2 class="card-title">Foods</h2>
+                <p>
+                    @Html.ActionLink("Create Food Source", "CreateFood")
+                </p>
                 <table class="table p-3 mb-5 bg-white rounded">
                     <caption>Foods</caption>
                     <thead>
@@ -246,9 +249,6 @@
                             </td>
                             <td data-title="Food Name">
                                 @food.FoodName
-                            </td>
-                            <td data-title="Provider Id">
-                                @food.FoodProviderId
                             </td>
                             <td data-title="Amount Id">
                                 @food.FoodAmountId

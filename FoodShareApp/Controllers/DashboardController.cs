@@ -103,5 +103,11 @@ namespace FoodShareApp.Controllers
             //}
             return Redirect("../../Events/Edit/"+id);
         }
+
+        // GET: Dashboard/CreateEvent
+        public ActionResult CreateFood()
+        {
+            return Redirect("../Foods/Create");
+        }
     }
 }
