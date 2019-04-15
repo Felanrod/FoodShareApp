@@ -10,7 +10,7 @@
         <ul class="mt-2 d-flex align-items-end flex-column">
             @foreach (var item in @ViewBag.Requesters)
             {
-                <li class="mb-3"><a href="../../Requesters/Details/@item.RequesterId">@item.Name</a> sent you a food request on:</li>
+                <li class="mb-3"><a href="../../Requesters/Details/@item.RequesterId">@item.Email</a> sent you a food request on:</li>
             }
         </ul>
     </div>
