@@ -4,94 +4,104 @@
     ViewBag.Title = "Notifications";
 }
 
-<h2>Notifications</h2>
+<h1>Notifications</h1>
 
     <section id="dashFoodProviders">
-        <h3>Unverified Food Providers</h3>
-        <table class="table">
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Logo
-                </th>
-                <th>
-                    Street
-                </th>
-                <th>
-                    City
-                </th>
-                <th>
-                    PostalCode
-                </th>
-                <th>
-                    PhoneNumber
-                </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Provider Type
-                </th>
-                <th>
-                    Website
-                </th>
-                @*<th>
-                    Verified
-                </th>*@
-                <th>
-                    Admin
-                </th>
-            </tr>
+        <div class="card card-custom">
+            <div class="card-body">
+                <h3>Unverified Food Providers</h3>
+                <table class="table">
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Logo
+                        </th>
+                        <th>
+                            Street
+                        </th>
+                        <th>
+                            City
+                        </th>
+                        <th>
+                            PostalCode
+                        </th>
+                        <th>
+                            PhoneNumber
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Provider Type
+                        </th>
+                        <th>
+                            Website
+                        </th>
+                        @*<th>
+                        Verified
+                    </th>*@
+                        <th>
+                            Admin
+                        </th>
+                        <th>
+                            Task
+                        </th>
+                    </tr>
 
-            @foreach (var foodProvider in Model)
-            {
-                if (!foodProvider.Verified)
-                {
+                    @foreach (var foodProvider in Model)
+                    {
+                        if (!foodProvider.Verified)
+                        {
 
-            <tr>
-                <td>
-                    @foodProvider.Name
-                </td>
-                <td>
-                    <img src="@foodProvider.LogoUrl" width="100" alt="" />
-                </td>
-                <td>
-                    @foodProvider.Street
-                </td>
-                <td>
-                    @foodProvider.City
-                </td>
-                <td>
-                    @foodProvider.PostalCode
-                </td>
-                <td>
-                    @foodProvider.PhoneNumber
-                </td>
-                <td>
-                    @foodProvider.Email
-                </td>
-                <td>
-                    @foodProvider.ProviderType.ProviderType1
-                </td>
-                <td>
-                    <a href="@foodProvider.Website">@foodProvider.Website</a>
-                </td>
-                <td>
-                    @foodProvider.Admin
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
-                    @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
-                </td>
+                            <tr>
+                                <td>
+                                    @foodProvider.Name
+                                </td>
+                                <td>
+                                    <img src="@foodProvider.LogoUrl" width="100" alt="" />
+                                </td>
+                                <td>
+                                    @foodProvider.Street
+                                </td>
+                                <td>
+                                    @foodProvider.City
+                                </td>
+                                <td>
+                                    @foodProvider.PostalCode
+                                </td>
+                                <td>
+                                    @foodProvider.PhoneNumber
+                                </td>
+                                <td>
+                                    @foodProvider.Email
+                                </td>
+                                <td>
+                                    @foodProvider.ProviderType.ProviderType1
+                                </td>
+                                <td>
+                                    <a href="@foodProvider.Website">@foodProvider.Website</a>
+                                </td>
+                                <td>
+                                    @foodProvider.Admin
+                                </td>
+                                <td>
+                                    <div class="d-inline-flex">
+                                        @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
+                                        @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
+                                    </div>
+                                </td>
 
-            </tr>
-                } // end if
-            }
+                            </tr>
+                        } // end if
+                    }
+                </table>
+            </div>
+        </div>
     </section>
 
-    <table class="table">
+    @*<table class="table">*@
 
         @*<tr>
             <th>
@@ -191,4 +201,4 @@
         </tr>
         }*@
 
-    </table>
+    @*</table>*@

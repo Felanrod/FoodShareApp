@@ -28,6 +28,18 @@
     color: black;
 }
 
+.cursor:hover {
+    cursor: pointer;
+    color: var(--secondary-blue)
+}
+
+.cursor {
+    transition: .5s
+}
+
+.pos-bottom {
+    margin-top: 6px
+}
 /*
     Theme colours in RGB(A)
     
