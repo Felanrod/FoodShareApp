@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "NotFound";
+}
+<!--Main Content -->
+<div class="mx-auto text-center">
+    <h1>404-Error</h1>
+    <p class="lead">OOPS! There's something wrong here.</p>
+</div>
+
+<section>
+    <!--card wrapper -->
+    <div class="card-deck-wrapper">
+        <div class="card-deck">
+            <div>
+                <!--replaces above for now-->
+                <div class="row shadow  mx-auto p-3 mb-5 bg-white rounded  ">
+                    <!-- Main Row -->
+                    <div class="col-md-6">
+                        <!--First / left column -->
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="lead">The page you're looking for can't be found.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mx-auto">
+                                <p class="lead text-custom">Here are some links that might be helpful:</p>
+                                <ul class="fa-ul list-unstyled">
+                                    <li class="lowercase"> <i class=" pr-3 fa-li fas fa-map-marker" aria-hidden="true"></i> Locate food on:<a href="/Map" title="FoodShare Map"> The FoodShare Map.</a></li>
+                                    <li class=" lowercase"><i class=" pr-3 fa-li fas fa-utensils" aria-hidden="true"></i> Organizations and people who share food:<a href="/FoodProviders" title="FoodShare Map List"> Food Sharers.</a></li>
+                                    <li class="lowercase"><i class=" pr-3 fa-li fas fa-envelope" aria-hidden="true"></i>Contact us: <a href="mailto:info@foodsharemap.com?subject=Inquiry%20From%20Site" title="Contact Us">Email Us</a></li>
+                                </ul>
+                                <div>
+                                    <p class="mt-5"><span class="text-primary"><strong>P.S.</strong></span> Please don't waste food.If you have extra food please share it with those who need it. </p>
+                                    <p> You can register as a Food Sharer here: <a href="/account/Register" title="FoodShare Map Sharer"><i class="fas fa-user-plus" aria-hidden="true"></i>The FoodShare Map</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End First / left column -->
+                    <!--Second / right column -->
+
+                    <div class="col-md-6">
+                        <figure>
+                            <img class="card-img-top img-thumbnail " src="~/Content/Images/wasted-food.jpg" alt="wasted food">
+                        </figure>
+
+                    </div>  <!--End Second / right column -->
+                </div><!-- /Main Row -->
+            </div><!-- Card  -->
+        </div><!-- /Card Deck -->
+    </div><!-- /card deck wrapper -->
+</section>
+

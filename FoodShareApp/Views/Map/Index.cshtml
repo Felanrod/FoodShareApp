@@ -13,7 +13,7 @@
     <p class="lead text-center">Click/tap an address to locate Food Sharer</p>
     <!--card wrapper -->
     <div class="card-deck-wrapper">
-        <div class="row">
+        <div class="row shadow  mx-auto p-3 mb-5 bg-white rounded   ">
             <!-- Main Row -->
             <div class="col-md-8">
                 <!-- column -->
@@ -23,26 +23,29 @@
             </div><!-- End  column -->
             <div class="col-md-4">
                 <h2>Food Providers</h2>
-                <table class="table">
-                    <tr>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Address
-                        </th>
-                    </tr>
-                    @foreach (var foodProvider in Model.foodProvider)
-                    {
-                        <tr class="sharerValues">
-                            <td>
-                                @foodProvider.Name
-                            </td>
-                            <td>
-                                @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
-                            </td>
+                <table class="table p-3 mb-5 bg-white rounded">
+                    <caption>Food Sharers</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Address
+                            </th>
                         </tr>
-                    }
+                    </thead>
+                        @foreach (var foodProvider in Model.foodProvider)
+                        {
+                            <tr class="sharerValues">
+                                <td data-title="Name" >
+                                    @foodProvider.Name
+                                </td>
+                                <td data-title="Address" >
+                                    @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
+                                </td>
+                            </tr>
+                        }
                 </table>
             </div>
         </div> <!-- /Main Row -->
