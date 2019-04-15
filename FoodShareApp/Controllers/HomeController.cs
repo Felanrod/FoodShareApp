@@ -12,7 +12,17 @@ namespace FoodShareApp.Controllers
 
         public ActionResult Index()
         {
-            var foodProviders = db.FoodProviders.OrderBy(f => Guid.NewGuid()).Take(3);
+            List<FoodProvider> foodProviders;
+            if (Request.IsAuthenticated)
+            {
+                // random assortment of providers can be viewed 
+                foodProviders = db.FoodProviders.OrderBy(f => Guid.NewGuid()).Take(3).ToList();
+            }
+            else
+            {
+                // if not logged in, first three providers only possible to view
+                foodProviders = db.FoodProviders.OrderByDescending(f => f.FoodProviderId).Take(3).ToList();
+            }
             return View(foodProviders);
         }
 
