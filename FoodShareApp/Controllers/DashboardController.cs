@@ -25,9 +25,29 @@ namespace FoodShareApp.Controllers
             {
                 foodProvider = db.FoodProviders.ToList(),
                 food = db.Foods.ToList().Where(f => f.FoodProviderId == userId),
-                events = db.Events.ToList()
+                events = db.Events.ToList(),
+                notifications = db.Notifications.ToList().Where(f => f.ToId == userId)
             };
 
+            //var ProviderId = User.Identity.GetUserId();
+            //List<Notification> ProviderNotifications = db.Notifications.Where(f => f.ToId == userId).ToList();
+
+            var Requesters = new List<Requester>();
+            foreach (var item in myModel.notifications)
+            {
+                var requesterid = item.FromId;
+                Requester Requester = db.Requesters.FirstOrDefault(f => f.RequesterId == requesterid);
+                Requesters.Add(Requester);
+            }
+
+            ViewBag.Requesters = Requesters;
+
+            //if (ProviderNotifications == null)
+            //{
+            //    return HttpNotFound();
+            //}
+
+            //return View(ProviderNotifications);
 
 
             return View(myModel);

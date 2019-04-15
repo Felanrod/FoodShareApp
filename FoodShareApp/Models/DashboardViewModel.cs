@@ -11,6 +11,6 @@ namespace FoodShareApp.Models
         public IEnumerable<Food> food { get; set; }
         public IEnumerable<Event> events { get; set; }
 
-        //public static bool Enabled { get; set; }
+        public IEnumerable<Notification> notifications { get; set; }
     }
 }

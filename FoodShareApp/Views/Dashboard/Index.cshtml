@@ -23,9 +23,9 @@
                aria-selected="false">Events</a>
         </li>
         <li class="nav-item">
-            @*<a class="nav-link dashTab-link rounded" data-toggle="tab" href="#notifications" role="tab" aria-controls="notifications"
-        aria-selected="false">Notifications</a>*@
-            <a href="/Dashboard/Notifications" class="nav-link dashTab-link rounded">Notifications</a>
+            <a class="nav-link dashTab-link rounded" data-toggle="tab" href="#dashNotifications" role="tab" aria-controls="dashNotifications"
+        aria-selected="false">Notifications</a>
+            @*<a href="/Dashboard/Notifications" class="nav-link dashTab-link rounded">Notifications</a>*@
         </li>
     </ul>
 </nav>
@@ -69,64 +69,64 @@
                                     Task
                                 </th>
                             }
-                            </tr>
+                        </tr>
                     </thead>
                     @foreach (var foodProvider in Model.foodProvider)
                     {
                         if (foodProvider.Verified)
                         {
-                    <tr>
-                        <td data-title="Name">
-                            @foodProvider.Name
-                        </td>
-                        <td data-title="Image">
-                            <img src="@foodProvider.LogoUrl" width="100" alt="" />
-                        </td>
-                        <td data-title="Address">
-                            @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
-                        </td>
-                        <td data-title="Phone">
-                            @foodProvider.PhoneNumber
-                        </td>
-                        <td data-title="Email">
-                            @foodProvider.Email
-                        </td>
-                        <td data-title="Type">
-                            @foodProvider.ProviderType.ProviderType1
-                        </td>
-                        <td data-title="Website">
-                            <a href="@foodProvider.Website">@foodProvider.Website</a>
-                        </td>
-                        <td data-title="Admin">
-                            @if (User.IsInRole("SuperAdmin"))
-                            {
-                                using (Html.BeginForm())
+                            <tr>
+                                <td data-title="Name">
+                                    @foodProvider.Name
+                                </td>
+                                <td data-title="Image">
+                                    <img src="@foodProvider.LogoUrl" width="100" alt="" />
+                                </td>
+                                <td data-title="Address">
+                                    @foodProvider.Street @foodProvider.City, @foodProvider.Province, @foodProvider.PostalCode
+                                </td>
+                                <td data-title="Phone">
+                                    @foodProvider.PhoneNumber
+                                </td>
+                                <td data-title="Email">
+                                    @foodProvider.Email
+                                </td>
+                                <td data-title="Type">
+                                    @foodProvider.ProviderType.ProviderType1
+                                </td>
+                                <td data-title="Website">
+                                    <a href="@foodProvider.Website">@foodProvider.Website</a>
+                                </td>
+                                <td data-title="Admin">
+                                    @if (User.IsInRole("SuperAdmin"))
+                                    {
+                                        using (Html.BeginForm())
+                                        {
+                                            @Html.AntiForgeryToken()
+
+
+                                            if (foodProvider.Admin)
+                                            {
+                                                <span> Yes </span>
+                                            }
+                                            else
+                                            {
+                                                <button name="UserId" type='submit' value="@foodProvider.FoodProviderId"> Make Admin </button>
+                                            }
+                                        }
+                                    }
+                                </td>
+                                @if (User.IsInRole("SuperAdmin"))
                                 {
-                                    @Html.AntiForgeryToken()
 
-
-                                    if (foodProvider.Admin)
-                                    {
-                                        <span> Yes </span>
-                                    }
-                                    else
-                                    {
-                                        <button name = "UserId" type ='submit' value="@foodProvider.FoodProviderId"> Make Admin </button>
-                                    }
+                                    <td data-title="Task">
+                                        <div class="d-inline-flex">
+                                            @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
+                                            @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
+                                        </div>
+                                    </td>
                                 }
-                            }
-                        </td>
-                        @if (User.IsInRole("SuperAdmin"))
-                        {
-
-                            <td data-title="Task">
-                                <div class="d-inline-flex">
-                                    @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId}, null) |
-                                    @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
-                                </div>
-                            </td>
-                        }
-                    </tr>
+                            </tr>
                         } // end if
                     }
                 </table>
@@ -163,16 +163,17 @@
                                 Website
                             </th>
                             <th>
-                                @if(User.IsInRole("SuperAdmin")) {
-                            <span>Task</span>
-                                        }
+                                @if (User.IsInRole("SuperAdmin"))
+                                {
+                                    <span>Task</span>
+                                }
                             </th>
                         </tr>
                     </thead>
                     @foreach (var foodProvider in Model.foodProvider)
+                    {
+                        if (!foodProvider.Verified)
                         {
-                            if (!foodProvider.Verified)
-                            {
                             <tr>
                                 <td data-title="Name">
                                     @foodProvider.Name
@@ -196,11 +197,12 @@
                                     <a href="@foodProvider.Website">@foodProvider.Website</a>
                                 </td>
                                 <td data-title="Task">
-                                        @if(User.IsInRole("SuperAdmin")) {
-                                    <div class="d-inline-flex">
-                                        @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
-                                        @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
-                                    </div>                                    
+                                    @if (User.IsInRole("SuperAdmin"))
+                                    {
+                                        <div class="d-inline-flex">
+                                            @Html.ActionLink("Edit", "Edit", "FoodProviders", new { id = foodProvider.FoodProviderId }, null) |
+                                            @Html.ActionLink("Delete", "Delete", "FoodProviders", new { id = foodProvider.FoodProviderId }, null)
+                                        </div>
                                     }
                                 </td>
                             </tr>
@@ -242,7 +244,7 @@
                         </tr>
                     </thead>
                     @foreach (var food in Model.food)
-                        {
+                    {
                         <tr>
                             <td data-title="Type">
                                 @food.FoodType.FoodType1
@@ -303,9 +305,9 @@
                         </tr>
                     </thead>
                     @if (Model.events != null)
+                    {
+                        foreach (var _event in Model.events)
                         {
-                            foreach (var _event in Model.events)
-                            {
                             <tr>
                                 <td data-title="Name">
                                     @_event.EventName
@@ -329,23 +331,61 @@
                                     @Html.ActionLink("Edit", "EditEvent", new { id = _event.EventId }) |
                                     @Html.ActionLink("Delete", "DeleteEvent", new { id = _event.EventId })
                                     @*@ViewBag.userId
-                                    @_event.FoodProviderAdminId
-                                    @if (ViewBag.UserId.ToString() == _event.FoodProviderAdminId)
-                                    {
-                                        Html.ActionLink("Edit", "EditEvent", new { id = _event.EventId });
-                                    }
-                                    else
-                                    {
-                                        <p>@_event.EventName;</p>
-                                    }*@
+                                        @_event.FoodProviderAdminId
+                                        @if (ViewBag.UserId.ToString() == _event.FoodProviderAdminId)
+                                        {
+                                            Html.ActionLink("Edit", "EditEvent", new { id = _event.EventId });
+                                        }
+                                        else
+                                        {
+                                            <p>@_event.EventName;</p>
+                                        }*@
                                     @*Html.ActionLink("Edit", "EditEvent", new { id = _event.EventId });
-                                    @Html.ActionLink("Details", "Details", new { id = item.EventId }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.EventId })*@
+                                            @Html.ActionLink("Details", "Details", new { id = item.EventId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.EventId })*@
                                 </td>
                             </tr>
                         }
                     }
                 </table>
+            </div>
+        </div>
+    </section>
+    <section class="tab-pane fade show active" id="dashNotifications" role="tabpanel" aria-labelledby="home-tab">
+        <div class="card card-custom mb-5">
+            <div class="card-body">
+                <h2 class="card-title">Notifications</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="mt-2 d-flex align-items-end flex-column">
+                            @foreach (var item in @ViewBag.Requesters)
+                            {
+                                <li class="mb-3"><a href="../../Requesters/Details/@item.RequesterId">@item.Email</a> sent you a food request on:</li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            @foreach (var notice in Model.notifications)
+                            {
+                                <form action="../FoodProviders/Notifications" method="post">
+                                    <li>
+                                        @using (Html.BeginForm())
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div>
+                                                <input type="hidden" name="FromId" value="@notice.ToId" />
+                                                <input type="hidden" name="ToId" value="@notice.FromId" />
+                                            </div>
+                                            @notice.DateCreated
+                                            <button class="btn btn-primary btn-sm" type="submit" name="id" value="@notice.NotificationId"> Cancel Request </button>
+                                        }
+                                    </li>
+                                </form>
+                            }
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
