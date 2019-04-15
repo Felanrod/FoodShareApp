@@ -107,11 +107,11 @@
 
                                     if (foodProvider.Admin)
                                     {
-                                        < span > Yes </ span >
+                                        <span> Yes </span>
                                     }
                                     else
                                     {
-                                        < button name = "UserId" type ='submit' value="@foodProvider.FoodProviderId" > Make Admin </ button >
+                                        <button name = "UserId" type ='submit' value="@foodProvider.FoodProviderId"> Make Admin </button>
                                     }
                                 }
                             }
@@ -326,17 +326,20 @@
                                     @_event.Notes
                                 </td>
                                 <td data-title="Tasks">
-                                    @ViewBag.userId
-                                                    @_event.FoodProviderAdminId
-                                                    @if ((string)ViewBag.userId == _event.FoodProviderAdminId)
-                                                    {
-                                    Html.ActionLink("Edit", "EditEvent", new { id = _event.EventId });
-                                }
+                                    @Html.ActionLink("Edit", "EditEvent", new { id = _event.EventId }) |
+                                    @Html.ActionLink("Delete", "DeleteEvent", new { id = _event.EventId })
+                                    @*@ViewBag.userId
+                                    @_event.FoodProviderAdminId
+                                    @if (ViewBag.UserId.ToString() == _event.FoodProviderAdminId)
+                                    {
+                                        Html.ActionLink("Edit", "EditEvent", new { id = _event.EventId });
+                                    }
                                     else
                                     {
                                         <p>@_event.EventName;</p>
-                                    }
-                                    @*@Html.ActionLink("Details", "Details", new { id = item.EventId }) |
+                                    }*@
+                                    @*Html.ActionLink("Edit", "EditEvent", new { id = _event.EventId });
+                                    @Html.ActionLink("Details", "Details", new { id = item.EventId }) |
                                 @Html.ActionLink("Delete", "Delete", new { id = item.EventId })*@
                                 </td>
                             </tr>

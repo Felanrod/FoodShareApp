@@ -20,7 +20,7 @@ namespace FoodShareApp.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            ViewBag.userId = userId.ToString();
+            ViewBag.UserId = userId;
             Models.DashboardViewModel myModel = new Models.DashboardViewModel
             {
                 foodProvider = db.FoodProviders.ToList(),
@@ -104,10 +104,22 @@ namespace FoodShareApp.Controllers
             return Redirect("../../Events/Edit/"+id);
         }
 
-        // GET: Dashboard/CreateEvent
+        // GET: Dashboard/DeleteEvent
+        public ActionResult DeleteFood(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return Redirect("../Events/Delete");
+        }
+
+        // GET: Dashboard/CreateFood
         public ActionResult CreateFood()
         {
             return Redirect("../Foods/Create");
         }
+
     }
 }
