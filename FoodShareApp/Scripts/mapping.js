@@ -9,6 +9,10 @@ const geocoder = L.mapbox.geocoder('mapbox.places');
 if (pageName == 'Map') {
     const addresses = document.querySelectorAll('.sharerValues td:nth-of-type(2n)');
     const initialAddress = addresses[0].textContent;
+    let initialMarkerNum = 10;
+    if (addresses.length <= 10) {
+        initialMarkerNum = addresses.length;
+    }
     //let map = new mapboxgl.Map({
     //    container: 'map',
     //    style: 'mapbox://styles/mapbox/streets-v11',
@@ -27,8 +31,10 @@ if (pageName == 'Map') {
             newAddress(e.target.textContent);
         });
     });
-
-    newAddress(initialAddress);
+    for (let i = initialMarkerNum-1; i >= 0; i--) {
+        newAddress(addresses[i].textContent);
+    }
+    //L.map.clearLayers();
 } else {
     const sharerAddress = document.querySelector('#sharerAddress');
     newAddress(sharerAddress.textContent);
